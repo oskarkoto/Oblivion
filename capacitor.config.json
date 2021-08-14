@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "oblivion",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
