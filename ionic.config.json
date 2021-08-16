@@ -1,7 +1,5 @@
 {
   "name": "oblivion",
-  "integrations": {
-    "capacitor": {}
-  },
+  "integrations": {},
   "type": "angular"
 }

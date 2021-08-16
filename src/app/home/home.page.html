@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <!-- No dejarlo ¿? -->
+  <ion-toolbar color="dark">
+    <ion-buttons slot="start">
+      <ion-button routerLink='../' fill="clear">
+        <img src="assets/img/Logo_Hotel.png" height="45">
+      </ion-button>
+    <ion-button routerLink='../' fill="clear" color="light">  Inicio </ion-button>
+    <ion-button [routerLink]="['../habitaciones']" fill="clear" color="light"> Ver Habitaciones </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <ion-slides pager="true" class="slide-full">
+      <ion-slide *ngFor="let slide of slides">
+          <img [src]="slide.img">
+      </ion-slide>
+    </ion-slides>
+
+    <ion-title align="center"><strong>Vacaciones en Familia</strong></ion-title>
+    <p align="center">Le damos la bienvenida a Oblivion Hotel & Resort. Navega por nuestra app.</p>
+  <!-- No sé como dejarlo en todas las vistas ¿? -->
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button [routerLink]="['/']" tab="home">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-tab-button>
+        <ion-tab-button [routerLink]="['../habitaciones']" tab="habitaciones">
+          <ion-icon name="bed-outline"></ion-icon>
+          <ion-label>Habitaciones</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button [routerLink]="['../slides']" tab="perfil">
+          <ion-icon name="person-circle"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+</ion-content>
