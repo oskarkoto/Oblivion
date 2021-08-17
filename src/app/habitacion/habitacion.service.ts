@@ -24,12 +24,11 @@ export class HabitacionService {
     )};
   }
 
-  addHabitacion(id: string, nombre: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
+  addHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
     img1: string, img2: string, img3: string){
-    id= Math.random().toString();
     const newHabitacion = new Habitacion(
       id,
-      nombre,
+      ubicacion,
       estado,
       categoria,
       descripcion,
