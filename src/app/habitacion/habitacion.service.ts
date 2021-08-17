@@ -3,6 +3,7 @@ import { TipoUsuario, Usuario  } from '../usuario/usuario.model';
 import { Injectable } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,27 @@ export class HabitacionService {
   }
 
   getAll(){
+    this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
+    .subscribe(
+        resData => {
+          const habitaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              habitaciones.push(new Habitacion(
+                key,
+                resData[key].ubicacion,
+                resData[key].estado,
+                resData[key].categoria,
+                resData[key].descripcion,
+                resData[key].img1,
+                resData[key].img2,
+                resData[key].img3
+              ));
+            }
+          }
+          this.habitaciones = habitaciones;
+        }
+      );
     return [...this.habitaciones];
   }
 
@@ -35,14 +57,14 @@ export class HabitacionService {
       img1,
       img2,
       img3);
-    this.httpClient.post('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
+    this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
-      id: newHabitacion.ubicacion
+      id: null
     })
     .subscribe(
       (resData) => {
-      console.log(resData);
+        newHabitacion.id = resData.name;
       },
     );
     this.habitaciones.push(newHabitacion);
