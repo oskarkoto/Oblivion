@@ -1,9 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/habitacion"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ habitacion.ubicacion }} </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        {{habitacion.ubicacion}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.estado}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.categoria}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.descripcion}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.img1}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.img2}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{habitacion.img3}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
