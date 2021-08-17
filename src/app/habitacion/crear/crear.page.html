@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="formExample">
+  <form [formGroup]="formCrear">
     <ion-grid>
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
@@ -70,14 +70,13 @@
       </ion-row>
 
       <ion-row *ngIf="
-
-        !formExample.get('ubicacion').valid &&
-        !formExample.get('estado').valid &&
-        !formExample.get('categoria').valid &&
-        !formExample.get('descripcion').valid &&
-        !formExample.get('img1').valid &&
-        !formExample.get('img2').valid &&
-        !formExample.get('img3').valid
+        !formCrear.get('ubicacion').valid &&
+        !formCrear.get('estado').valid &&
+        !formCrear.get('categoria').valid &&
+        !formCrear.get('descripcion').valid &&
+        !formCrear.get('img1').valid &&
+        !formCrear.get('img2').valid &&
+        !formCrear.get('img3').valid
       ">
         <ion-col  size-sm="6" offset-sm="3">
           <p>Todos los campos son requeridos</p>

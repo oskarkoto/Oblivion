@@ -10,15 +10,15 @@ import { HabitacionService } from '../habitacion.service';
 })
 export class CrearPage implements OnInit {
 
-  formExample: FormGroup;
+  formCrear: FormGroup;
 
   constructor(
-    private habitacionService: HabitacionService,
+    private habitacionServicio: HabitacionService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.formExample = new FormGroup({
+    this.formCrear = new FormGroup({
 
       ubicacion: new FormControl(null, {
         updateOn: 'blur',
@@ -49,19 +49,19 @@ export class CrearPage implements OnInit {
   }
 
   addFunction(){
-    if(!this.formExample.valid){
+    if(!this.formCrear.valid){
       return;
     }
-    console.log(this.formExample);
-    this.habitacionService.addHabitacion(
-      this.formExample.value.ubicacion,
-      this.formExample.value.ubicacion,
-      this.formExample.value.estado,
-      this.formExample.value.categoria,
-      this.formExample.value.descripcion,
-      this.formExample.value.img1,
-      this.formExample.value.img2,
-      this.formExample.value.img3
+    console.log(this.formCrear);
+    this.habitacionServicio.addHabitacion(
+      this.formCrear.value.ubicacion,
+      this.formCrear.value.ubicacion,
+      this.formCrear.value.estado,
+      this.formCrear.value.categoria,
+      this.formCrear.value.descripcion,
+      this.formCrear.value.img1,
+      this.formCrear.value.img2,
+      this.formCrear.value.img3
     );
     this.router.navigate(['/habitacion']);
   }

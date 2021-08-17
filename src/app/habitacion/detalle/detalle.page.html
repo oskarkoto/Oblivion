@@ -4,6 +4,11 @@
       <ion-back-button defaultHref="/habitacion"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ habitacion.ubicacion }} </ion-title>
+    <ion-button slot = 'primary'>
+      <ion-button [routerLink]="['./editar']">
+        <ion-icon name='pencil' slot='icon-only'></ion-icon>
+      </ion-button>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 

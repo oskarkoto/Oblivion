@@ -12,7 +12,7 @@ export class HabitacionService {
   private habitaciones: Habitacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-
+    this.habitaciones = this.getAll();
   }
 
   getAll(){
@@ -68,6 +68,11 @@ export class HabitacionService {
       },
     );
     this.habitaciones.push(newHabitacion);
+  }
+
+  editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
+    img1: string, img2: string, img3: string){
+
   }
 
 }
