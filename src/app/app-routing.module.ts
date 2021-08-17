@@ -13,11 +13,95 @@ const routes: Routes = [
   },
   {
     path: 'habitaciones',
-    loadChildren: () => import('./habitaciones/habitaciones.module').then( m => m.HabitacionesPageModule)
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./habitaciones/habitaciones.module').then(
+            m => m.HabitacionesPageModule
+          )
+      },
+      {
+        path: ':habitacionesId',
+        loadChildren: () => import('./habitaciones/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      },
+      {
+        path: 'crear',
+        loadChildren: () => import('./habitaciones/crear/crear.module').then( m => m.CrearPageModule)
+      },
+      {
+        path: ':habitacionesId/editar',
+        loadChildren: () => import('./habitaciones/editar/editar.module').then( m => m.EditarPageModule)
+      },
+      {
+        path: 'editar',
+        children: [
+          {
+            path: ':habitacionesId',
+            loadChildren: () => import('./habitaciones/editar/editar.module').then( m => m.EditarPageModule)
+          }
+        ]
+      }
+    ]
   },
   {
-    path: 'detalle/:habitacionesId',
-    loadChildren: () => import('./habitaciones/detalle/detalle.module').then( m => m.DetallePageModule)
+    path: 'usuario',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./usuario/usuario.module').then(
+            m => m.UsuarioPageModule
+          )
+      },
+      {
+        path: ':usuarioId',
+        loadChildren: () => import('./usuario/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      },
+      {
+        path: 'crear',
+        loadChildren: () => import('./usuario/crear/crear.module').then( m => m.CrearPageModule)
+      },
+      {
+        path: ':usuarioId/editar',
+        loadChildren: () => import('./usuario/editar/editar.module').then( m => m.EditarPageModule)
+      },
+      {
+        path: 'editar',
+        children: [
+          {
+            path: ':usuarioId',
+            loadChildren: () => import('./usuario/editar/editar.module').then( m => m.EditarPageModule)
+          }
+        ]
+      }
+    ]
+  },
+  {
+    path: 'reservacion',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./reservacion/reservacion.module').then(
+            m => m.ReservacionPageModule
+          )
+      },
+      {
+        path: ':reservacionId',
+        loadChildren: () => import('./reservacion/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      },
+      {
+        path: 'crear',
+        loadChildren: () => import('./reservacion/crear/crear.module').then( m => m.CrearPageModule)
+      }
+    ]
   },
 
 ];

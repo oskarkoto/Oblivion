@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Habitacion } from './habitaciones.model';
+import { HabitacionesService } from './habitaciones.service';
 
 @Component({
   selector: 'app-habitaciones',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./habitaciones.page.scss'],
 })
 export class HabitacionesPage implements OnInit {
-
-  constructor() { }
+  habitaciones: Habitacion[];
+  constructor(private habitacionesServicio: HabitacionesService) { }
 
   ngOnInit() {
+    this.habitaciones = this.habitacionesServicio.getAll();
+  }
+
+  ionViewWillEnter(){
+    this.habitaciones = this.habitacionesServicio.getAll();
   }
 
 }
