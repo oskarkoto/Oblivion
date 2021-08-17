@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HabitacionesPageRoutingModule } from './habitaciones-routing.module';
+import { HabitacionPageRoutingModule } from './habitacion-routing.module';
 
-import { HabitacionesPage } from './habitaciones.page';
+import { HabitacionPage } from './habitacion.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    HabitacionesPageRoutingModule
+    HabitacionPageRoutingModule
   ],
-  declarations: [HabitacionesPage]
+  declarations: [HabitacionPage]
 })
-export class HabitacionesPageModule {}
+export class HabitacionPageModule {}

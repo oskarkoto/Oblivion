@@ -1,4 +1,4 @@
-import { EstadoHabitacion, CategoriaHabitacion, Habitacion } from './habitaciones.model';
+import { EstadoHabitacion, CategoriaHabitacion, Habitacion } from './habitacion.model';
 import { TipoUsuario, Usuario  } from '../usuario/usuario.model';
 import { Injectable } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class HabitacionesService {
+export class HabitacionService {
   private habitaciones: Habitacion[] = [];
   constructor(private httpClient: HttpClient)
   {
@@ -18,9 +18,9 @@ export class HabitacionesService {
     return [...this.habitaciones];
   }
 
-  getHabitacion(habitacionesId: string){
+  getHabitacion(habitacionId: string){
     return {...this.habitaciones.find(
-      habitacion => habitacionesId === habitacion.id
+      habitacion => habitacionId === habitacion.id
     )};
   }
 

@@ -12,35 +12,35 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'habitaciones',
+    path: 'habitacion',
     children: [
       {
         path: '',
         loadChildren: () =>
-          import('./habitaciones/habitaciones.module').then(
-            m => m.HabitacionesPageModule
+          import('./habitacion/habitacion.module').then(
+            m => m.HabitacionPageModule
           )
       },
       {
-        path: ':habitacionesId',
-        loadChildren: () => import('./habitaciones/detalle/detalle.module').then(
+        path: ':habitacionId',
+        loadChildren: () => import('./habitacion/detalle/detalle.module').then(
           m => m.DetallePageModule
         )
       },
       {
         path: 'crear',
-        loadChildren: () => import('./habitaciones/crear/crear.module').then( m => m.CrearPageModule)
+        loadChildren: () => import('./habitacion/crear/crear.module').then( m => m.CrearPageModule)
       },
       {
-        path: ':habitacionesId/editar',
-        loadChildren: () => import('./habitaciones/editar/editar.module').then( m => m.EditarPageModule)
+        path: ':habitacionId/editar',
+        loadChildren: () => import('./habitacion/editar/editar.module').then( m => m.EditarPageModule)
       },
       {
         path: 'editar',
         children: [
           {
-            path: ':habitacionesId',
-            loadChildren: () => import('./habitaciones/editar/editar.module').then( m => m.EditarPageModule)
+            path: ':habitacionId',
+            loadChildren: () => import('./habitacion/editar/editar.module').then( m => m.EditarPageModule)
           }
         ]
       }
@@ -103,6 +103,11 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'habitacion',
+    loadChildren: () => import('./habitacion/habitacion.module').then( m => m.HabitacionPageModule)
+  },
+
 
 ];
 
