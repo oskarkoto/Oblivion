@@ -54,7 +54,7 @@ export class CrearPage implements OnInit {
     }
     console.log(this.formCrear);
     this.habitacionServicio.addHabitacion(
-      this.formCrear.value.ubicacion,
+      this.formCrear.value.id,
       this.formCrear.value.ubicacion,
       this.formCrear.value.estado,
       this.formCrear.value.categoria,

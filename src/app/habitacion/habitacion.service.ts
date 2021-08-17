@@ -72,7 +72,27 @@ export class HabitacionService {
 
   editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
     img1: string, img2: string, img3: string){
-
+    const newHabitacion = new Habitacion(
+      id,
+      ubicacion,
+      estado,
+      categoria,
+      descripcion,
+      img1,
+      img2,
+      img3);
+    this.httpClient.put(
+      `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion/${id}.json`,
+    {
+      ...newHabitacion,
+      id: null
+    })
+    .subscribe(
+      (resData) => {
+        console.log(resData);
+        //newHabitacion.id = resData.name;
+      },
+    );
   }
 
 }

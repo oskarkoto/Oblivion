@@ -33,7 +33,9 @@ export class EditarPage implements OnInit {
       }
     );
     this.formEdit = new FormGroup({
-
+      id: new FormControl(this.habitacion.id, {
+        updateOn: 'blur'
+      }),
       ubicacion: new FormControl(this.habitacion.ubicacion, {
         updateOn: 'blur',
         validators:[Validators.required]
@@ -68,7 +70,7 @@ export class EditarPage implements OnInit {
     }
     console.log(this.formEdit);
     this.habitacionServicio.editHabitacion(
-      this.formEdit.value.ubicacion,
+      this.formEdit.value.id,
       this.formEdit.value.ubicacion,
       this.formEdit.value.estado,
       this.formEdit.value.categoria,
