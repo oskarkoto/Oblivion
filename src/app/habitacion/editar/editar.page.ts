@@ -34,29 +34,29 @@ export class EditarPage implements OnInit {
     );
     this.formEdit = new FormGroup({
 
-      ubicacion: new FormControl(null, {
+      ubicacion: new FormControl(this.habitacion.ubicacion, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      estado: new FormControl(null, {
+      estado: new FormControl(this.habitacion.estado, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      categoria: new FormControl(null, {
+      categoria: new FormControl(this.habitacion.categoria, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      descripcion: new FormControl(null, {
+      descripcion: new FormControl(this.habitacion.descripcion, {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      img1: new FormControl(null, {
+      img1: new FormControl(this.habitacion.img1, {
         validators: [Validators.required]
       }),
-      img2: new FormControl(null, {
+      img2: new FormControl(this.habitacion.img2, {
         validators: [Validators.required]
       }),
-      img3: new FormControl(null, {
+      img3: new FormControl(this.habitacion.img3, {
         validators: [Validators.required]
       })
     });

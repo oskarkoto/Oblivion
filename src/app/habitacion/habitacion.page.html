@@ -1,18 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>habitaciones</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Habitaciones</ion-title>
+    <ion-button slot = 'primary'>
+      <ion-button [routerLink]="['./crear']">
+        <ion-icon name='add-circle-outline' slot='icon-only'></ion-icon>
+      </ion-button>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <h1>HABITACIONES</h1>
-  <button>
-    class
-  </button>
-  <ion-button expand="fullscreen" fill="outline" color="primary">
-    <ion-icon  slot="end" name="star"></ion-icon>
-    Test
-  </ion-button>
   <ion-list>
     <ion-item *ngFor="let habitacion of habitaciones" [routerLink]="['./', habitacion.id]">
       <ion-avatar>
