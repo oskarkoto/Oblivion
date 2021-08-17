@@ -19,10 +19,7 @@ export class CrearPage implements OnInit {
 
   ngOnInit() {
     this.formExample = new FormGroup({
-      id: new FormControl(null, {
-        updateOn: 'blur',
-        validators: [Validators.required]
-      }),
+
       ubicacion: new FormControl(null, {
         updateOn: 'blur',
         validators:[Validators.required]
@@ -57,7 +54,7 @@ export class CrearPage implements OnInit {
     }
     console.log(this.formExample);
     this.habitacionService.addHabitacion(
-      this.formExample.value.id,
+      this.formExample.value.ubicacion,
       this.formExample.value.ubicacion,
       this.formExample.value.estado,
       this.formExample.value.categoria,

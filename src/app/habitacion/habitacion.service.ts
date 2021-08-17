@@ -38,7 +38,7 @@ export class HabitacionService {
     this.httpClient.post('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
-      id: newHabitacion.id
+      id: newHabitacion.ubicacion
     })
     .subscribe(
       (resData) => {
