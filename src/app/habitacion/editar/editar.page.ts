@@ -54,9 +54,6 @@ export class EditarPage implements OnInit {
       }),
       img: new FormControl(this.habitacion.img, {
         validators: [Validators.required]
-      }),
-      uri: new FormControl(this.habitacion.uri, {
-        validators: [Validators.required]
       })
     });
   }
@@ -72,8 +69,7 @@ export class EditarPage implements OnInit {
       this.formEdit.value.estado,
       this.formEdit.value.categoria,
       this.formEdit.value.descripcion,
-      this.formEdit.value.img,
-      this.formEdit.value.uri
+      this.formEdit.value.img
     );
     this.router.navigate(['/habitacion']);
   }

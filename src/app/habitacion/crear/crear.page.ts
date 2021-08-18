@@ -19,7 +19,6 @@ export interface FILE {
   styleUrls: ['./crear.page.scss'],
 })
 export class CrearPage implements OnInit {
-
   formCrear: FormGroup;
   ngFireUploadTask: AngularFireUploadTask;
   progressNum: Observable<number>;
@@ -45,6 +44,7 @@ export class CrearPage implements OnInit {
   }
 
     fileUpload(event: FileList) {
+      //obtengo el archivo completo de la img (nombre, tipo, tamaño, etc..)
       const file = event.item(0);
       if (file.type.split('/')[0] !== 'image') {
         console.log('File type is not supported!');
@@ -52,12 +52,15 @@ export class CrearPage implements OnInit {
       }
       this.isImgUploading = true;
       this.isImgUploaded = false;
+      // obtengo solo el nombre de la imagen
       this.fileName = file.name;
       const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
       const imageRef = this.angularFireStorage.ref(fileStoragePath);
+      // subo imagen a firestorage con el nombre y todas sus prop(tipo, tamaño, etc..)
       this.ngFireUploadTask = this.angularFireStorage.upload(fileStoragePath, file);
       this.progressNum = this.ngFireUploadTask.percentageChanges();
-      this.progressSnapshot = this.ngFireUploadTask.snapshotChanges().pipe(
+      this.progressSnapshot = this.ngFireUploadTask.snapshotChanges()
+      .pipe(
         finalize(() => {
           this.fileUploadedPath = imageRef.getDownloadURL();
           this.fileUploadedPath.subscribe(resp=>{
@@ -118,6 +121,7 @@ export class CrearPage implements OnInit {
       return;
     }
     console.log(this.formCrear);
+    console.log(this.fileUploadedPath);
     this.habitacionServicio.addHabitacion(
       this.formCrear.value.id,
       this.formCrear.value.ubicacion,
@@ -125,7 +129,6 @@ export class CrearPage implements OnInit {
       this.formCrear.value.categoria,
       this.formCrear.value.descripcion,
       this.formCrear.value.img,
-      this.formCrear.value.uri,
     );
     this.router.navigate(['/habitacion']);
   }

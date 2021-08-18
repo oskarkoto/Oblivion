@@ -27,8 +27,7 @@ export class HabitacionService {
                 resData[key].estado,
                 resData[key].categoria,
                 resData[key].descripcion,
-                resData[key].img,
-                resData[key].uri
+                resData[key].img
               ));
             }
           }
@@ -46,15 +45,14 @@ export class HabitacionService {
   }
 
   addHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
-    img: string, uri: string){
+    img: string){
     const newHabitacion = new Habitacion(
       id,
       ubicacion,
       estado,
       categoria,
       descripcion,
-      img,
-      uri);
+      img);
     this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
@@ -69,15 +67,14 @@ export class HabitacionService {
   }
 
   editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
-    img: string, uri: string){
+    img: string){
     const newHabitacion = new Habitacion(
       id,
       ubicacion,
       estado,
       categoria,
       descripcion,
-      img,
-      uri);
+      img);
     this.httpClient.put(
       `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion/${id}.json`,
     {

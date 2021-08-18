@@ -95,8 +95,7 @@
             <ion-card-content>
               <div *ngIf="fileUploadedPath | async as fileUrl">
                 <img [src]="fileUrl" />
-                <a [href]="fileUrl" rel="nofollow" target="_blank">Descargar</a>
-                <ion-input value="fileUrl" formControlName="uri" hidden></ion-input>
+                <a [href]="fileUrl" rel="nofollow" target="_blank">{{fileUrl}}</a>
               </div>
             </ion-card-content>
           </ion-card>
