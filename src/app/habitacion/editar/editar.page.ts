@@ -52,13 +52,10 @@ export class EditarPage implements OnInit {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      img1: new FormControl(this.habitacion.img1, {
+      img: new FormControl(this.habitacion.img, {
         validators: [Validators.required]
       }),
-      img2: new FormControl(this.habitacion.img2, {
-        validators: [Validators.required]
-      }),
-      img3: new FormControl(this.habitacion.img3, {
+      uri: new FormControl(this.habitacion.uri, {
         validators: [Validators.required]
       })
     });
@@ -75,9 +72,8 @@ export class EditarPage implements OnInit {
       this.formEdit.value.estado,
       this.formEdit.value.categoria,
       this.formEdit.value.descripcion,
-      this.formEdit.value.img1,
-      this.formEdit.value.img2,
-      this.formEdit.value.img3
+      this.formEdit.value.img,
+      this.formEdit.value.uri
     );
     this.router.navigate(['/habitacion']);
   }

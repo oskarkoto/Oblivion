@@ -16,12 +16,11 @@ export interface Habitacion{
   estado: EstadoHabitacion;
   categoria: CategoriaHabitacion;
   descripcion: string;
-  img1: string;
-  img2: string;
-  img3: string;
+  img: string;
+  uri: string;
 }
 
 export class Habitacion{
   constructor(public id: string, public ubicacion: string, public estado: EstadoHabitacion, public categoria: CategoriaHabitacion,
-    public descripcion: string, public img1: string, public img2: string, public img3: string){}
+    public descripcion: string, public img: string, uri: string){}
 }
