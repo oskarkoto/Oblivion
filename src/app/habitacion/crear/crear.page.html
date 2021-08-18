@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [routerLink]="['/habitacion']"></ion-back-button>
+      <ion-back-button defaultHref="/habitacion"></ion-back-button>
     </ion-buttons>
     <ion-title>Crear</ion-title>
     <ion-buttons slot="primary">
@@ -27,7 +27,10 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Estado</ion-label>
-            <ion-textarea row="3" formControlName="estado"></ion-textarea>
+            <ion-select value="Activa" okText="Okay" cancelText="Cancelar" formControlName="estado">
+              <ion-select-option value="Activa">Activa</ion-select-option>
+              <ion-select-option value="Inactiva">Inactiva</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -35,7 +38,13 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Categoria</ion-label>
-            <ion-input type="text" autocomplete autocorrect formControlName="categoria"></ion-input>
+            <ion-select value="Economy" okText="Okay" cancelText="Cancelar" formControlName="categoria">
+              <ion-select-option value="Activa">Economy</ion-select-option>
+              <ion-select-option value="Inactiva">Double</ion-select-option>
+              <ion-select-option value="Inactiva">Junior</ion-select-option>
+              <ion-select-option value="Activa">Deluxe</ion-select-option>
+              <ion-select-option value="Inactiva">Family</ion-select-option>
+            </ion-select>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -43,7 +52,7 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Descripcion</ion-label>
-            <ion-input type="text" autocomplete autocorrect formControlName="descripcion"></ion-input>
+            <ion-textarea type="text" autocomplete autocorrect formControlName="descripcion"></ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>

@@ -1,5 +1,4 @@
 import { EstadoHabitacion, CategoriaHabitacion, Habitacion } from './habitacion.model';
-import { TipoUsuario, Usuario  } from '../usuario/usuario.model';
 import { Injectable } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
