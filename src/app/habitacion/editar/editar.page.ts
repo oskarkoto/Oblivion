@@ -132,6 +132,10 @@ export class EditarPage implements OnInit {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
+      provincia: new FormControl(this.habitacion.provincia, {
+        updateOn: 'blur',
+        validators:[Validators.required]
+      }),
       descripcion: new FormControl(this.habitacion.descripcion, {
         updateOn: 'blur',
         validators: [Validators.required]
@@ -154,6 +158,7 @@ export class EditarPage implements OnInit {
       this.formEdit.value.categoria,
       this.formEdit.value.capacidad,
       this.formEdit.value.precio,
+      this.formEdit.value.provincia,
       this.formEdit.value.descripcion,
       this.uri
     );

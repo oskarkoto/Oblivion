@@ -115,6 +115,10 @@ export class CrearPage implements OnInit {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
+      provincia: new FormControl(null, {
+        updateOn: 'blur',
+        validators:[Validators.required]
+      }),
       descripcion: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
@@ -138,6 +142,7 @@ export class CrearPage implements OnInit {
       this.formCrear.value.categoria,
       this.formCrear.value.capacidad,
       this.formCrear.value.precio,
+      this.formCrear.value.provincia,
       this.formCrear.value.descripcion,
       this.uri
     );

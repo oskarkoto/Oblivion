@@ -67,6 +67,22 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
+            <ion-label position="floating">Provincia donde se ubica</ion-label>
+             <ion-select value="San Jose" okText="Okay" cancelText="Cancelar" formControlName="provincia">
+              <ion-select-option value="San Jose">Oblivion San José</ion-select-option>
+              <ion-select-option value="Alajuela">Oblivion Alajuela</ion-select-option>
+              <ion-select-option value="Heredia">Oblivion Heredia</ion-select-option>
+              <ion-select-option value="Cartago">Oblivion Cartago</ion-select-option>
+              <ion-select-option value="Puntarenas">Oblivion Puntarenas</ion-select-option>
+              <ion-select-option value="Guanacaste">Oblivion Guanacaste</ion-select-option>
+              <ion-select-option value="Limon">Oblivion Limon</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
             <ion-label position="floating">Descripcion</ion-label>
             <ion-textarea type="text" autocomplete autocorrect formControlName="descripcion"></ion-textarea>
           </ion-item>
@@ -123,6 +139,7 @@
         !formCrear.get('categoria').valid &&
         !formCrear.get('capacidad').valid &&
         !formCrear.get('precio').valid &&
+        !formCrear.get('provincia').valid &&
         !formCrear.get('descripcion').valid &&
         !formCrear.get('img').valid
       ">

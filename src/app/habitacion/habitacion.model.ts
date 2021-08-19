@@ -5,6 +5,7 @@ export interface Habitacion{
   categoria: string;
   capacidad: number;
   precio: number;
+  provincia: string;
   descripcion: string;
   img: string;
 }
@@ -12,5 +13,5 @@ export interface Habitacion{
 export class Habitacion{
   constructor(public id: string, public nombre: string, public estado: string,
     public categoria: string, public capacidad: number, public precio: number,
-    public descripcion: string, public img: string){}
+    public provincia: string, public descripcion: string, public img: string){}
 }
