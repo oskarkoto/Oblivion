@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/habitacion"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ habitacion.ubicacion }} </ion-title>
+    <ion-title>{{ habitacion.nombre }} </ion-title>
     <ion-button slot = 'primary'>
       <ion-button [routerLink]="['./editar']">
         <ion-icon name='pencil' slot='icon-only'></ion-icon>
@@ -16,27 +16,38 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        {{habitacion.ubicacion}}
+        <ion-label position="floating">Nombre: {{habitacion.nombre}}</ion-label>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        {{habitacion.estado}}
+        <ion-label position="floating">Estado: {{habitacion.estado}}</ion-label>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        {{habitacion.categoria}}
+        <ion-label position="floating">Categoria: {{habitacion.categoria}}</ion-label>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        {{habitacion.descripcion}}
+        <ion-label position="floating">Capacidad: {{habitacion.capacidad}}</ion-label>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        {{habitacion.img}}
+        <ion-label position="floating">Precio: {{habitacion.precio}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating">Descripción: {{habitacion.descripcion}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-label position="floating">Imagen <br></ion-label>
+        <img src={{habitacion.img}}>
       </ion-col>
     </ion-row>
   </ion-grid>

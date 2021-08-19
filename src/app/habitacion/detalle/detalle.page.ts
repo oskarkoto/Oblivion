@@ -27,6 +27,7 @@ export class DetallePage implements OnInit {
         }
         const habitacionId = paramMap.get('habitacionId');
         this.habitacion = this.habitacionServicio.getHabitacion(habitacionId);
+        console.log(this.habitacion);
       }
     );
   }
