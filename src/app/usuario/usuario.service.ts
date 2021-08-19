@@ -91,4 +91,14 @@ export class UsuarioService {
       },
     );
   }
+
+  deleteUsuario(id: string){
+    this.httpClient.delete(
+      `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario/${id}.json`)
+    .subscribe(
+      (resData) => {
+        console.log(resData);
+      },
+    );
+  }
 }

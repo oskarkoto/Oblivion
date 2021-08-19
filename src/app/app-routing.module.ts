@@ -103,10 +103,7 @@ const routes: Routes = [
       }
     ]
   },
-  {
-    path: 'habitacion',
-    loadChildren: () => import('./habitacion/habitacion.module').then( m => m.HabitacionPageModule)
-  },
+
 
 
 ];

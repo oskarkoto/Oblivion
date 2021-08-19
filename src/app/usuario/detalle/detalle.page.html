@@ -3,41 +3,42 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/usuario"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ usuario.nombre }} </ion-title>
-    <ion-button slot = 'primary'>
-      <ion-button [routerLink]="['./editar']">
-        <ion-icon name='pencil' slot='icon-only'></ion-icon>
-      </ion-button>
-    </ion-button>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['./editar']"><ion-icon name='pencil' slot='icon-only'></ion-icon></ion-button>
+      <ion-button (click)="deleteUsuario()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        {{usuario.nombre}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        {{usuario.primerApellido}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        {{usuario.segundoApellido}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        {{usuario.correo}}
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        {{usuario.tipo}}
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Detalles del usuario
+        <ion-item-divider></ion-item-divider>
+      </ion-card-title>
+      <ion-card-content>
+        <ion-row>
+          <ion-label>Nombre </ion-label>
+          <ion-text>{{usuario.nombre}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label>Apellidos </ion-label>
+          <ion-text>{{usuario.primerApellido}} {{usuario.segundoApellido}} </ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label>Correo:  </ion-label>
+          <ion-text>{{usuario.correo}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label>Teléfono: </ion-label>
+          <ion-text>{{usuario.telefono}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-label>Tipo de Usuario: </ion-label>
+          <ion-text color="danger" style="font-weight: bold;">{{usuario.tipo}}</ion-text>
+        </ion-row>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
 </ion-content>

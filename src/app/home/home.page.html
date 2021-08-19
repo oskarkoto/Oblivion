@@ -2,30 +2,11 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
-    <ion-slides pager="true" class="slide-full">
-      <ion-slide *ngFor="let slide of slides">
-          <img [src]="slide.img">
-      </ion-slide>
-    </ion-slides>
-
-    <ion-title align="center"><strong>Vacaciones en Familia</strong></ion-title>
-    <p align="center">Le damos la bienvenida a Oblivion Hotel & Resort. Navega por nuestra app.</p>
-  <!-- No sé como dejarlo en todas las vistas ¿? -->
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button [routerLink]="['/']" tab="home">
-          <ion-icon name="home-outline"></ion-icon>
-          <ion-label>Inicio</ion-label>
-        </ion-tab-button>
-        <ion-tab-button [routerLink]="['/habitacion']" tab="habitacion">
-          <ion-icon name="bed-outline"></ion-icon>
-          <ion-label>Habitaciones</ion-label>
-        </ion-tab-button>
-        <ion-tab-button [routerLink]="['/usuario']" tab="perfil">
-          <ion-icon name="person-circle"></ion-icon>
-          <ion-label>Perfil</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+  <ion-slides pager="true" class="slide-full">
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.img">
+    </ion-slide>
+  </ion-slides>
+  <ion-title align="center"><strong>Vacaciones en Familia</strong></ion-title>
+  <p align="center">Le damos la bienvenida a Oblivion Hotel & Resort. Reserva ahora tu habitación.</p>
 </ion-content>

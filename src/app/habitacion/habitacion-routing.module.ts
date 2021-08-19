@@ -19,7 +19,7 @@ const routes: Routes = [
   {
     path: 'editar',
     loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
-  }
+  },
 
 ];
 

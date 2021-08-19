@@ -32,4 +32,19 @@ export class DetallePage implements OnInit {
     );
   }
 
+  deleteUsuario() {
+    this.activatedRoute.paramMap.subscribe(
+      paramMap => {
+        if(!paramMap.has('usuarioId')){
+          // No existe el parametro redirecciono
+          return;
+        }
+        const usuarioId = paramMap.get('usuarioId');
+        if (window.confirm('Do you really want to delete?')) {
+         this.usuarioServicio.deleteUsuario(usuarioId);
+      }
+      }
+    );
+  }
+
 }

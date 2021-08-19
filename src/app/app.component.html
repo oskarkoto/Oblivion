@@ -1,3 +1,16 @@
 <ion-app>
   <ion-router-outlet></ion-router-outlet>
+  <ion-tabs class="oblivion-tabs">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['home']" tab="home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/habitacion']" tab="habitacion">
+        <ion-icon name="bed-outline"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/usuario']" tab="usuario">
+        <ion-icon name="people-outline"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-app>
