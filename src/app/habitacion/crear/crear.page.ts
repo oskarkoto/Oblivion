@@ -19,6 +19,7 @@ export interface FILE {
   styleUrls: ['./crear.page.scss'],
 })
 export class CrearPage implements OnInit {
+  uri: string;
   formCrear: FormGroup;
   ngFireUploadTask: AngularFireUploadTask;
   progressNum: Observable<number>;
@@ -69,6 +70,7 @@ export class CrearPage implements OnInit {
               filepath: resp,
               size: this.fileSize
             });
+            this.uri = resp;
             this.isImgUploading = false;
             this.isImgUploaded = true;
           },error => {
@@ -128,7 +130,7 @@ export class CrearPage implements OnInit {
       this.formCrear.value.estado,
       this.formCrear.value.categoria,
       this.formCrear.value.descripcion,
-      this.formCrear.value.img,
+      this.uri
     );
     this.router.navigate(['/habitacion']);
   }
