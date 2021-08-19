@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HabitacionService } from '../habitacion.service';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 
@@ -19,9 +21,20 @@ export interface FILE {
 export class CrearPage implements OnInit {
   uri: string;
   formCrear: FormGroup;
+  ngFireUploadTask: AngularFireUploadTask;
+  progressNum: Observable<number>;
+  progressSnapshot: Observable<any>;
+  fileUploadedPath: Observable<string>;
+  files: Observable<FILE[]>;
+  fileName: string;
+  fileSize: number;
   isImgUploading: boolean;
   isImgUploaded: boolean;
+  private ngFirestoreCollection: AngularFirestoreCollection<FILE>;
+
   constructor(
+    private angularFirestore: AngularFirestore,
+    private angularFireStorage: AngularFireStorage,
     private habitacionServicio: HabitacionService,
     private router: Router
   ) {
@@ -105,6 +118,9 @@ export class CrearPage implements OnInit {
       descripcion: new FormControl(null, {
         updateOn: 'blur',
         validators: [Validators.required]
+      }),
+      img: new FormControl(null, {
+        validators: [Validators.required]
       })
     });
   }
@@ -114,6 +130,7 @@ export class CrearPage implements OnInit {
       return;
     }
     console.log(this.formCrear);
+    console.log(this.fileUploadedPath);
     this.habitacionServicio.addHabitacion(
       this.formCrear.value.id,
       this.formCrear.value.nombre,
