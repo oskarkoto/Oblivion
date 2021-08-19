@@ -1,8 +1,3 @@
-export interface TipoUsuario{
-  id: string;
-  nombreTipo: string;
-}
-
 export interface Usuario{
   id: string;
   nombre: string;
@@ -11,10 +6,10 @@ export interface Usuario{
   telefono: string;
   correo: string;
   password: string;
-  tipo: TipoUsuario;
+  tipo: string;
 }
 
 export class Usuario{
   constructor(public id: string, public nombre: string, public primerApellido: string, public segundoApellido: string,
-    public telefono: string, public correo: string, public password: string, public tipo: TipoUsuario){}
+    public telefono: string, public correo: string, public password: string, public tipo: string){}
 }

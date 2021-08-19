@@ -1,4 +1,4 @@
-import { Usuario, TipoUsuario} from './usuario.model';
+import { Usuario } from './usuario.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -45,7 +45,7 @@ export class UsuarioService {
   }
 
   addUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
-    telefono: string,correo: string,password: string,tipo: TipoUsuario){
+    telefono: string,correo: string,password: string,tipo: string){
     const newUsuario = new Usuario(
       id,
       nombre,
@@ -69,7 +69,7 @@ export class UsuarioService {
   }
 
   editUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
-    telefono: string,correo: string,password: string,tipo: TipoUsuario){
+    telefono: string,correo: string,password: string,tipo: string){
     const newUsuario = new Usuario(
       id,
       nombre,
