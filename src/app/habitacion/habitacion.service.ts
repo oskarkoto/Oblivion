@@ -1,7 +1,8 @@
-import { EstadoHabitacion, CategoriaHabitacion, Habitacion } from './habitacion.model';
+import { Habitacion } from './habitacion.model';
 import { Injectable } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +23,13 @@ export class HabitacionService {
             if(resData.hasOwnProperty(key)){
               habitaciones.push(new Habitacion(
                 key,
-                resData[key].ubicacion,
+                resData[key].nombre,
                 resData[key].estado,
                 resData[key].categoria,
-                resData[key].descripcion
+                resData[key].capacidad,
+                resData[key].precio,
+                resData[key].descripcion,
+                resData[key].img
               ));
             }
           }
@@ -42,13 +46,17 @@ export class HabitacionService {
     )};
   }
 
-  addHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string){
+  addHabitacion(id: string, nombre: string, estado: string, categoria: string,
+    capacidad: number, precio: number, descripcion: string, img: string){
     const newHabitacion = new Habitacion(
       id,
-      ubicacion,
+      nombre,
       estado,
       categoria,
-      descripcion);
+      capacidad,
+      precio,
+      descripcion,
+      img);
     this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
@@ -62,14 +70,17 @@ export class HabitacionService {
     this.habitaciones.push(newHabitacion);
   }
 
-  editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string){
+  editHabitacion(id: string, nombre: string, estado: string, categoria: string,
+    capacidad: number, precio: number, descripcion: string, img: string){
     const newHabitacion = new Habitacion(
       id,
-      ubicacion,
+      nombre,
       estado,
       categoria,
-      descripcion
-    );
+      capacidad,
+      precio,
+      descripcion,
+      img);
     this.httpClient.put(
       `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion/${id}.json`,
     {
@@ -79,6 +90,7 @@ export class HabitacionService {
     .subscribe(
       (resData) => {
         console.log(resData);
+        //newHabitacion.id = resData.name;
       },
     );
   }

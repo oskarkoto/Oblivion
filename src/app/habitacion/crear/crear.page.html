@@ -18,8 +18,8 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">Ubicacion</ion-label>
-            <ion-input type="text" autocomplete autocorrect formControlName="ubicacion"></ion-input>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="nombre"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -51,16 +51,80 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
+            <ion-label position="floating">Capacidad</ion-label>
+            <ion-textarea type="number" autocomplete autocorrect formControlName="capacidad"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Precio por noche</ion-label>
+            <ion-textarea type="number" autocomplete autocorrect formControlName="precio"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
             <ion-label position="floating">Descripcion</ion-label>
             <ion-textarea type="text" autocomplete autocorrect formControlName="descripcion"></ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-card *ngIf="!isImgUploading && !isImgUploaded">
+            <ion-card-header>
+              <ion-card-title>Imagen</ion-card-title>
+            </ion-card-header>
+            <ion-button color="danger">
+              <input type="file" class="upload" (change)="fileUpload($event.target.files)" formControlName="img"/>
+            </ion-button>
+          </ion-card>
+          <ion-card *ngIf="isImgUploading && !isImgUploaded">
+            <ion-card-header>
+              <ion-card-title>Archivo Seleccionado: <b>{{ fileName }}</b></ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div *ngIf="progressNum | async as percentage">
+                Progreso: {{ percentage | number }}%
+                <ion-progress-bar value="{{ percentage / 100 }}"></ion-progress-bar>
+              </div>
+              <div *ngIf="progressSnapshot | async as pSnapshot">
+                <div *ngIf="progressSnapshot && pSnapshot.bytesTransferred !== pSnapshot.totalBytes">
+                  <ion-button color="danger" fill="outline" size="small" (click)="ngFireUploadTask.cancel()">Cancelar</ion-button>
+                  <ion-button color="secondary" fill="outline" size="small" (click)="ngFireUploadTask.pause()">Pausa
+                  </ion-button>
+                  <ion-button color="dark" fill="outline" size="small" (click)="ngFireUploadTask.resume()" class="button">Continuar
+                  </ion-button>
+                </div>
+              </div>
+            </ion-card-content>
+          </ion-card>
+          <ion-card *ngIf="!isImgUploading && isImgUploaded">
+            <ion-card-header>
+              <ion-card-title>
+                <b>{{ fileName }}</b> Cargado
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <div *ngIf="fileUploadedPath | async as fileUrl">
+                <img [src]="fileUrl" />
+                <a [href]="fileUrl" rel="nofollow" target="_blank"><br>Descargar Imagen</a>
+              </div>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
       <ion-row *ngIf="
-        !formCrear.get('ubicacion').valid &&
+        !formCrear.get('nombre').valid &&
         !formCrear.get('estado').valid &&
         !formCrear.get('categoria').valid &&
-        !formCrear.get('descripcion').valid
+        !formCrear.get('capacidad').valid &&
+        !formCrear.get('precio').valid &&
+        !formCrear.get('descripcion').valid &&
+        !formCrear.get('img').valid
       ">
         <ion-col  size-sm="6" offset-sm="3">
           <p>Todos los campos son requeridos</p>

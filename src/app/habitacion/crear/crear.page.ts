@@ -17,15 +17,72 @@ export interface FILE {
   styleUrls: ['./crear.page.scss'],
 })
 export class CrearPage implements OnInit {
+  uri: string;
   formCrear: FormGroup;
+  isImgUploading: boolean;
+  isImgUploaded: boolean;
   constructor(
     private habitacionServicio: HabitacionService,
     private router: Router
-  ) {}
+  ) {
+    this.isImgUploading = false;
+    this.isImgUploaded = false;
+    this.ngFirestoreCollection = angularFirestore.collection<FILE>('filesCollection');
+    this.files = this.ngFirestoreCollection.valueChanges();
+  }
+
+  fileUpload(event: FileList) {
+    //obtengo el archivo completo de la img (nombre, tipo, tamaño, etc..)
+    const file = event.item(0);
+    if (file.type.split('/')[0] !== 'image') {
+      console.log('File type is not supported!');
+      return;
+    }
+    this.isImgUploading = true;
+    this.isImgUploaded = false;
+    // obtengo solo el nombre de la imagen
+    this.fileName = file.name;
+    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
+    const imageRef = this.angularFireStorage.ref(fileStoragePath);
+    // subo imagen a firestorage con el nombre y todas sus prop(tipo, tamaño, etc..)
+    this.ngFireUploadTask = this.angularFireStorage.upload(fileStoragePath, file);
+    this.progressNum = this.ngFireUploadTask.percentageChanges();
+    this.progressSnapshot = this.ngFireUploadTask.snapshotChanges()
+    .pipe(
+      finalize(() => {
+        this.fileUploadedPath = imageRef.getDownloadURL();
+        this.fileUploadedPath.subscribe(resp=>{
+          this.fileStorage({
+            name: file.name,
+            filepath: resp,
+            size: this.fileSize
+          });
+          this.uri = resp;
+          this.isImgUploading = false;
+          this.isImgUploaded = true;
+        },error => {
+          console.log(error);
+        });
+      }),
+      tap(snap => {
+          this.fileSize = snap.totalBytes;
+      })
+    );
+  }
+
+  fileStorage(image: FILE) {
+      const imgId = this.angularFirestore.createId();
+      this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
+        console.log(data);
+      }).catch(error => {
+        console.log(error);
+      });
+  }
 
   ngOnInit() {
     this.formCrear = new FormGroup({
-      ubicacion: new FormControl(null, {
+
+      nombre: new FormControl(null, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
@@ -34,6 +91,14 @@ export class CrearPage implements OnInit {
         validators:[Validators.required]
       }),
       categoria: new FormControl(null, {
+        updateOn: 'blur',
+        validators:[Validators.required]
+      }),
+      capacidad: new FormControl(null, {
+        updateOn: 'blur',
+        validators:[Validators.required]
+      }),
+      precio: new FormControl(null, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
@@ -51,10 +116,13 @@ export class CrearPage implements OnInit {
     console.log(this.formCrear);
     this.habitacionServicio.addHabitacion(
       this.formCrear.value.id,
-      this.formCrear.value.ubicacion,
+      this.formCrear.value.nombre,
       this.formCrear.value.estado,
       this.formCrear.value.categoria,
-      this.formCrear.value.descripcion
+      this.formCrear.value.capacidad,
+      this.formCrear.value.precio,
+      this.formCrear.value.descripcion,
+      this.uri
     );
     this.router.navigate(['/habitacion']);
   }
