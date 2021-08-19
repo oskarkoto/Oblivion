@@ -1,8 +1,6 @@
 import { Habitacion } from './habitacion.model';
 import { Injectable } from '@angular/core';
-import { identifierModuleUrl } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

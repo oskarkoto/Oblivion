@@ -1,9 +1,43 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/usuario"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ usuario.nombre }} </ion-title>
+    <ion-button slot = 'primary'>
+      <ion-button [routerLink]="['./editar']">
+        <ion-icon name='pencil' slot='icon-only'></ion-icon>
+      </ion-button>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        {{usuario.nombre}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{usuario.primerApellido}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{usuario.segundoApellido}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{usuario.correo}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        {{usuario.tipo}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>usuario</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Usuarios</ion-title>
+    <ion-button slot = 'primary'>
+      <ion-button [routerLink]="['./crear']">
+        <ion-icon name='add-circle-outline' slot='icon-only'></ion-icon>
+      </ion-button>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <h1>Lista de Usuarios</h1>
+  <ion-list>
+    <ion-item *ngFor="let usuario of usuarios" [routerLink]="['./', usuario.id]">
+      <ion-label>{{usuario.nombre}} {{usuario.primerApellido}} {{usuario.segundoApellido}} - </ion-label>
+      <ion-label>{{usuario.correo}} - {{usuario.telefono}} - {{usuario.tipo}} - </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
