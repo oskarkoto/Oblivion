@@ -68,7 +68,7 @@
           </ion-card>
           <ion-card *ngIf="isImgUploading && !isImgUploaded">
             <ion-card-header>
-              <ion-card-title>Archivo Seleccionado: <b>{{ FileName }}</b></ion-card-title>
+              <ion-card-title>Archivo Seleccionado: <b>{{ fileName }}</b></ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <div *ngIf="progressNum | async as percentage">
@@ -76,7 +76,7 @@
                 <ion-progress-bar value="{{ percentage / 100 }}"></ion-progress-bar>
               </div>
               <div *ngIf="progressSnapshot | async as pSnapshot">
-                <div *ngIf="progressSnapshot && pSnapshot.bytesTransferred != pSnapshot.totalBytes">
+                <div *ngIf="progressSnapshot && pSnapshot.bytesTransferred !== pSnapshot.totalBytes">
                   <ion-button color="danger" fill="outline" size="small" (click)="ngFireUploadTask.cancel()">Cancelar</ion-button>
                   <ion-button color="secondary" fill="outline" size="small" (click)="ngFireUploadTask.pause()">Pausa
                   </ion-button>
@@ -89,7 +89,7 @@
           <ion-card *ngIf="!isImgUploading && isImgUploaded">
             <ion-card-header>
               <ion-card-title>
-                <b>{{ FileName }}</b> Cargado
+                <b>{{ fileName }}</b> Cargado
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
