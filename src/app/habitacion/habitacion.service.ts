@@ -2,7 +2,6 @@ import { EstadoHabitacion, CategoriaHabitacion, Habitacion } from './habitacion.
 import { Injectable } from '@angular/core';
 import { identifierModuleUrl } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +25,7 @@ export class HabitacionService {
                 resData[key].ubicacion,
                 resData[key].estado,
                 resData[key].categoria,
-                resData[key].descripcion,
-                resData[key].img
+                resData[key].descripcion
               ));
             }
           }
@@ -44,15 +42,13 @@ export class HabitacionService {
     )};
   }
 
-  addHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
-    img: string){
+  addHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string){
     const newHabitacion = new Habitacion(
       id,
       ubicacion,
       estado,
       categoria,
-      descripcion,
-      img);
+      descripcion);
     this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
@@ -66,15 +62,14 @@ export class HabitacionService {
     this.habitaciones.push(newHabitacion);
   }
 
-  editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string,
-    img: string){
+  editHabitacion(id: string, ubicacion: string, estado: EstadoHabitacion, categoria: CategoriaHabitacion, descripcion: string){
     const newHabitacion = new Habitacion(
       id,
       ubicacion,
       estado,
       categoria,
-      descripcion,
-      img);
+      descripcion
+    );
     this.httpClient.put(
       `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion/${id}.json`,
     {
@@ -84,7 +79,6 @@ export class HabitacionService {
     .subscribe(
       (resData) => {
         console.log(resData);
-        //newHabitacion.id = resData.name;
       },
     );
   }

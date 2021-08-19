@@ -8,6 +8,9 @@ export interface CategoriaHabitacion{
   nombre: string;
   precioNoche: number;
   capacidad: number;
+  img1: string;
+  img3: string;
+  img2: string;
 }
 
 export interface Habitacion{
@@ -16,10 +19,9 @@ export interface Habitacion{
   estado: EstadoHabitacion;
   categoria: CategoriaHabitacion;
   descripcion: string;
-  img: string;
 }
 
 export class Habitacion{
   constructor(public id: string, public ubicacion: string, public estado: EstadoHabitacion, public categoria: CategoriaHabitacion,
-    public descripcion: string, public img: string){}
+    public descripcion: string){}
 }
