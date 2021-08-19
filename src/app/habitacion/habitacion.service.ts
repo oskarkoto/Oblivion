@@ -39,6 +39,65 @@ export class HabitacionService {
     return [...this.habitaciones];
   }
 
+  getAllActiva(){
+    this.httpClient.get<{ [key: string]: Habitacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json?orderBy="estado"&equalTo=Activa')
+    .subscribe(
+        resData => {
+          const habitaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              habitaciones.push(new Habitacion(
+                key,
+                resData[key].nombre,
+                resData[key].estado,
+                resData[key].categoria,
+                resData[key].capacidad,
+                resData[key].precio,
+                resData[key].provincia,
+                resData[key].descripcion,
+                resData[key].img
+              ));
+            }
+          }
+          this.habitaciones = habitaciones;
+          console.log(habitaciones);
+        }
+      );
+    return [...this.habitaciones];
+  }
+
+  getAllActivaProvincia(prov: string){
+    this.httpClient.get<{ [key: string]: Habitacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json?orderBy="estado"&equalTo=Activa')
+    .subscribe(
+        resData => {
+          const habitaciones = [];
+          const habitacionesProv = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              if(resData[key].provincia === prov){
+                habitaciones.push(new Habitacion(
+                  key,
+                  resData[key].nombre,
+                  resData[key].estado,
+                  resData[key].categoria,
+                  resData[key].capacidad,
+                  resData[key].precio,
+                  resData[key].provincia,
+                  resData[key].descripcion,
+                  resData[key].img
+                ));
+              }
+            }
+          }
+          this.habitaciones = habitaciones;
+          console.log(habitaciones);
+        }
+      );
+    return [...this.habitaciones];
+  }
+
   getHabitacion(habitacionId: string){
     return {...this.habitaciones.find(
       habitacion => habitacionId === habitacion.id
