@@ -24,7 +24,7 @@ export class HomePage implements OnInit{
       img: '/assets/img/inicio/privado_inicio.jpg'}
     ];
   constructor(
-    private habitacionServicio: HabitacionService,
+    //private habitacionServicio: HabitacionService,
     private router: Router) {}
 
     ngOnInit() {
@@ -53,10 +53,12 @@ export class HomePage implements OnInit{
         if (!this.formBuscar.value.checkOut){
           if (!this.formBuscar.value.provincia){
             //busco habitaciones activas sin filtros de checkin, checkout y provincia
+            console.log('sin parametros hacia habitacion');
             this.router.navigate(['/habitacion']);
           } else {
             //busco habitaciones activas con filtro de provincia
             const uProvincia = this.formBuscar.value.provincia;
+            console.log('con provincia de parametro');
             this.router.navigate(['/habitacion', { provincia: uProvincia }]);
           }
         } else {
@@ -70,12 +72,14 @@ export class HomePage implements OnInit{
             //busco habitaciones activas con filtro checkIn y checkOut
             const fCheckIn = this.formBuscar.value.checkIn;
             const fCheckOut = this.formBuscar.value.checkOut;
+            console.log('con checkin y checkout de parametro');
             this.router.navigate(['/habitacion', { checkIn: fCheckIn }, { checkOut: fCheckOut }]);
           } else {
             //busco habitaciones activas con filtro checkIn, checkOut y Provincia
             const uProvincia = this.formBuscar.value.provincia;
             const fCheckIn = this.formBuscar.value.checkIn;
             const fCheckOut = this.formBuscar.value.checkOut;
+            console.log('con checkin, checkout y provincia de parametro');
             this.router.navigate(['/habitacion', { checkIn: fCheckIn }, { checkOut: fCheckOut }, { provincia: uProvincia }]);
           }
         }

@@ -8,12 +8,14 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class HabitacionService {
-  private habitaciones: Habitacion[] = [];
-  private reservaciones: Reservacion[] = [];
+  private habitaciones: Habitacion[];
+  //private habitaciones: Habitacion[] = [];
+  private reservaciones: Reservacion[];
+  //private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-    this.habitaciones = this.getAllHabs();
-    this.reservaciones = this.getAllRes();
+    this.habitaciones = [];
+    this.reservaciones = [];
   }
 
   // format date in typescript
@@ -45,6 +47,7 @@ export class HabitacionService {
   }
 
   getAllHabsAct(){
+    console.log('entro a getAllHabsAct');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -97,6 +100,7 @@ export class HabitacionService {
   }
 
   getAllHabsActProvFechas(prov: string, checkIn: Date, checkOut: Date){
+    console.log('entro a getAllHabsActProvFechas');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -125,6 +129,7 @@ export class HabitacionService {
   }
 
   getAllHabsActFechas(checkIn: Date, checkOut: Date){
+    console.log('entro a getAllHabsActFechas');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -150,6 +155,7 @@ export class HabitacionService {
   }
 
   getHabitacion(habitacionId: string){
+    console.log('entro a getHabitacion');
     return {...this.habitaciones.find(
       habitacion => habitacionId === habitacion.id
     )};
@@ -174,6 +180,7 @@ export class HabitacionService {
 
   editHabitacion(id: string, nombre: string, estado: string, categoria: string,
     capacidad: number, precio: number, provincia: string, descripcion: string, img: string){
+    console.log('entro a editHabitacion');
     const newHabitacion = new Habitacion(
       id,
       nombre,

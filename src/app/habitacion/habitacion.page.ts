@@ -19,6 +19,8 @@ export class HabitacionPage implements OnInit {
     private router: Router) {}
 
   ngOnInit() {
+    console.log('onInit de Habitacion');
+
     //this.habitaciones = this.habitacionServicio.getAllHabsAct();
     //this.reservaciones = this.habitacionServicio.getAllRes();
 
@@ -28,6 +30,7 @@ export class HabitacionPage implements OnInit {
           if (!paramMap.has('checkIn')){
             if (!paramMap.has('checkOut')){
               //devuelvo todas las habitaciones activas
+              console.log('de onInit a getAllHabsAct');
               this.habitaciones = this.habitacionServicio.getAllHabsAct();
             } else {
               //Alerta: No puedo buscar sin CheckIn
@@ -43,6 +46,7 @@ export class HabitacionPage implements OnInit {
               const fCheckIn = new Date(this.habitacionServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
               const dCheckOut = new Date(paramMap.get('checkOut'));
               const fCheckOut = new Date(this.habitacionServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              console.log('de onInit a getAllHabsActFechas');
               this.habitaciones = this.habitacionServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
             }
           }
@@ -50,6 +54,7 @@ export class HabitacionPage implements OnInit {
           if (!paramMap.has('checkIn')){
             if (!paramMap.has('checkOut')){
               //devuelvo todas las habitaciones activas de la provincia seleccionada
+              console.log('de onInit a getAllHabsActProv');
               this.habitaciones = this.habitacionServicio.getAllHabsActProv(paramMap.get('provincia'));
             } else {
               //Alerta: no puedo buscar sin checkIn
@@ -66,6 +71,7 @@ export class HabitacionPage implements OnInit {
               const fCheckIn = new Date(this.habitacionServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
               const dCheckOut = new Date(paramMap.get('checkOut'));
               const fCheckOut = new Date(this.habitacionServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              console.log('de onInit a getAllHabsActProvFechas');
               this.habitaciones = this.habitacionServicio.getAllHabsActProvFechas(paramMap.get('provincia'),
               fCheckIn, fCheckOut);
             }
@@ -73,9 +79,11 @@ export class HabitacionPage implements OnInit {
         }
       }
     );
+    //this.habitaciones = this.habitacionServicio.getAllHabsAct();
   }
 
   ionViewWillEnter(){
+    console.log('onViewWillEnter');
     //this.habitaciones = this.habitacionServicio.getAllHabsAct();
     //this.reservaciones = this.habitacionServicio.getAllRes();
     this.activatedRoute.paramMap.subscribe(
@@ -129,6 +137,7 @@ export class HabitacionPage implements OnInit {
         }
       }
     );
+    //this.habitaciones = this.habitacionServicio.getAllHabsAct();
   }
 
 }
