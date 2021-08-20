@@ -2,6 +2,7 @@ import { Habitacion, Reservacion } from './habitacion.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../Usuario/usuario.model';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,15 @@ export class HabitacionService {
     this.reservaciones = this.getAllRes();
   }
 
+  // format date in typescript
+  getFormatedDate(date: Date, format: string) {
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(date, format);
+  }
+
   //----*----*----Metodos de Habitacion----*----*----//
   getAllHabs(){
+    console.log('entro a getAllHabs');
     this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
@@ -61,6 +69,7 @@ export class HabitacionService {
   }
 
   getAllHabsActProv(prov: string){
+    console.log('entro a getAllHabsActProv');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -125,6 +134,7 @@ export class HabitacionService {
             if(resData.hasOwnProperty(key)){
               //condicional estado Activa
               if (resData[key].estado === 'Activa'){
+                //falta condicional de reservaciones entre checkin checkout
                 habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
                   resData[key].categoria, resData[key].capacidad, resData[key].precio,
                   resData[key].provincia, resData[key].descripcion, resData[key].img

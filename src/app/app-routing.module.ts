@@ -45,16 +45,35 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'crear-reservacion',
+        path: ':habitacionId/crear-reservacion',
         loadChildren: () => import('./habitacion/crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
+      },
+      {
+        path: 'crear-reservacion',
+        children: [
+          {
+            path: ':habitacionId',
+            loadChildren: () => import('./habitacion/crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
+          }
+        ]
       },
       {
         path: 'reservacion',
         loadChildren: () => import('./habitacion/reservacion/reservacion.module').then( m => m.ReservacionPageModule)
       },
       {
-        path: 'detalle-reservacion',
+        path: ':habitacionId/detalle',
         loadChildren: () => import('./habitacion/detalle-reservacion/detalle-reservacion.module').then( m => m.DetalleReservacionPageModule)
+      },
+      {
+        path: 'detalle-reservacion',
+        children: [
+          {
+            path: ':habitacionId',
+            loadChildren: () =>
+            import('./habitacion/detalle-reservacion/detalle-reservacion.module').then( m => m.DetalleReservacionPageModule)
+          }
+        ]
       }
     ]
   },

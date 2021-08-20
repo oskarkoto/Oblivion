@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { Habitacion } from '../habitacion.model';
+import { Habitacion, Reservacion } from '../habitacion.model';
 import { HabitacionService } from '../habitacion.service';
 
 @Component({
@@ -11,6 +11,7 @@ import { HabitacionService } from '../habitacion.service';
 })
 export class DetallePage implements OnInit {
   habitacion: Habitacion;
+  reservacion: Reservacion;
   constructor(
     private activatedRoute: ActivatedRoute,
     private habitacionServicio: HabitacionService,
@@ -22,7 +23,7 @@ export class DetallePage implements OnInit {
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
         if(!paramMap.has('habitacionId')){
-          // No existe el parametro redirecciono
+          //Alerta: No existe Habitación
           return;
         }
         const habitacionId = paramMap.get('habitacionId');
