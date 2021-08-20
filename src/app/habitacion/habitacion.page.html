@@ -3,25 +3,41 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Habitaciones</ion-title>
-    <ion-button slot = 'primary'>
-      <ion-button [routerLink]="['./crear']">
-        <ion-icon name='add-circle-outline' slot='icon-only'></ion-icon>
-      </ion-button>
-    </ion-button>
+      <ion-buttons slot="end" >
+        <ion-tab-button [routerLink]="['./crear']">
+          <ion-icon name="add-circle-outline" ></ion-icon>
+          <ion-label>Agregar</ion-label>
+        </ion-tab-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>HABITACIONES</h1>
-  <ion-list>
-    <ion-item *ngFor="let habitacion of habitaciones" [routerLink]="['./', habitacion.id]">
-      <ion-avatar>
-        <ion-img [src]="habitacion.img"></ion-img>
-      </ion-avatar>
-      <ion-label>{{habitacion.id}} - {{habitacion.nombre}} - {{habitacion.estado}} - {{habitacion.categoria}}
-      - {{habitacion.capacidad}} - {{habitacion.precio}} - {{habitacion.descripcion}}</ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let habitacion of habitaciones" [routerLink]="['./', habitacion.id]">
+    <ion-row>
+        <ion-col col-3>
+          <ion-avatar>
+            <ion-img [src]="habitacion.img"></ion-img>
+          </ion-avatar>
+        </ion-col>
+        <ion-col col-9>
+            <ion-item-divider width="20px"><strong>{{habitacion.nombre}}</strong></ion-item-divider>
+        <ion-card-content>
+            <ion-row>
+              <ion-icon name="grid-outline" style="margin-left: 5px;margin-right: 5px;"></ion-icon>
+              <ion-text> {{habitacion.categoria}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text><strong> <ion-icon name="location-outline"></ion-icon> {{habitacion.provincia}}</strong></ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-icon  name="people-outline" style="margin-left: 5px;margin-right: 5px;"></ion-icon>{{habitacion.capacidad}}
+            </ion-row>
+              <ion-row>
+                <ion-text style="margin-right: initial;"><strong>₡{{habitacion.precio}} (CRC)</strong></ion-text>
+              </ion-row>
+          </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
-
