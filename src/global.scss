@@ -48,13 +48,23 @@ ion-card{
 ion-row{
   margin:auto;
 }
+
 ion-card-title{
   text-align: center;
 }
+
 ion-card-title, ion-card-content{
   text-shadow: 1px 1px 2px #c5c5c4;
 }
+
 ion-label{
   margin-right: 0;
   font-weight: bold;
+}
+
+ion-tabs ion-label{
+  margin-right: 0;
+  font-weight:normal;
+  font-family: "Calibri";
+  font-size: small;
 }

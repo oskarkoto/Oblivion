@@ -3,21 +3,36 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
-    <ion-title>Usuarios</ion-title>
-    <ion-button slot = 'primary'>
-      <ion-button [routerLink]="['./crear']">
-        <ion-icon name='add-circle-outline' slot='icon-only'></ion-icon>
-      </ion-button>
-    </ion-button>
+      <ion-buttons slot="end">
+        <ion-tab-button [routerLink]="['./crear']">
+          <ion-icon name="person-add-outline"></ion-icon>
+          <ion-label>Agregar</ion-label>
+        </ion-tab-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Lista de Usuarios</h1>
-  <ion-list>
-    <ion-item *ngFor="let usuario of usuarios" [routerLink]="['./', usuario.id]">
-      <ion-label>{{usuario.nombre}} {{usuario.primerApellido}} {{usuario.segundoApellido}} - </ion-label>
-      <ion-label>{{usuario.correo}} - {{usuario.telefono}} - {{usuario.tipo}} - </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-card *ngFor="let usuario of usuarios" [routerLink]="['./', usuario.id]">
+    <ion-card-header >
+      <ion-item-divider>
+      <ion-card-title>
+        {{usuario.nombre}} {{usuario.primerApellido}} {{usuario.segundoApellido}}
+      </ion-card-title>
+      </ion-item-divider>
+      <ion-card-content>
+        <ion-row>
+          <ion-text>{{usuario.telefono}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text>{{usuario.correo}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-text style="font-weight: bold; margin:initial;">{{usuario.tipo}}</ion-text>
+        </ion-row>
+      </ion-card-content>
+    </ion-card-header>
+  </ion-card>
 </ion-content>
+
+
