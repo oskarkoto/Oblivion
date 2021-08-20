@@ -7,14 +7,6 @@ const routes: Routes = [
   {
     path: '',
     component: ReservacionPage
-  },
-  {
-    path: 'detalle',
-    loadChildren: () => import('./detalle/detalle.module').then( m => m.DetallePageModule)
-  },
-  {
-    path: 'crear',
-    loadChildren: () => import('./crear/crear.module').then( m => m.CrearPageModule)
   }
 ];
 

@@ -4,9 +4,13 @@
       <ion-back-button slot="start" defaultHref="/habitacion"></ion-back-button>
     </ion-buttons>
     <ion-buttons  slot = 'end'>
-    <ion-button [routerLink]="['./editar']"><ion-icon name='pencil' slot='icon-only'></ion-icon>
-    </ion-button>
-  </ion-buttons>
+      <ion-button [routerLink]="['./crear-reservacion']">
+        <ion-icon name="cart-outline"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['./editar']"><ion-icon name='pencil' slot='icon-only'>
+        </ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Habitacion, Reservacion } from './habitacion.model';
-import { HabitacionService } from './habitacion.service';
+import { Habitacion, Reservacion } from '../habitacion.model';
+import { HabitacionService } from '../habitacion.service';
 
 
 @Component({
-  selector: 'app-habitacion',
-  templateUrl: './habitacion.page.html',
-  styleUrls: ['./habitacion.page.scss'],
+  selector: 'app-reservacion',
+  templateUrl: './reservacion.page.html',
+  styleUrls: ['./reservacion.page.scss'],
 })
-export class HabitacionPage implements OnInit {
+export class ReservacionPage implements OnInit {
   habitaciones: Habitacion[];
   reservaciones: Reservacion[];
 

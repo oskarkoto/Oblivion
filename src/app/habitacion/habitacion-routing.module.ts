@@ -19,7 +19,19 @@ const routes: Routes = [
   {
     path: 'editar',
     loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
+  },  {
+    path: 'crear-reservacion',
+    loadChildren: () => import('./crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
   },
+  {
+    path: 'detalle-reservacion',
+    loadChildren: () => import('./detalle-reservacion/detalle-reservacion.module').then( m => m.DetalleReservacionPageModule)
+  },
+  {
+    path: 'reservacion',
+    loadChildren: () => import('./reservacion/reservacion.module').then( m => m.ReservacionPageModule)
+  },
+
 
 ];
 

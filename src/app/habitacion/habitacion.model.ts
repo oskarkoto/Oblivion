@@ -15,3 +15,17 @@ export class Habitacion{
     public categoria: string, public capacidad: number, public precio: number,
     public provincia: string, public descripcion: string, public img: string){}
 }
+
+export interface Reservacion{
+  id: string;
+  usuario: string;
+  habitacion: string;
+  checkIn: Date;
+  checkOut: Date;
+  precioTotal: number;
+}
+
+export class Reservacion{
+  constructor(public id: string, public usuario: string, public habitacion: string,
+    public checkIn: Date, public checkOut: Date, public precioTotal: number){}
+}

@@ -1,34 +1,31 @@
-import { Habitacion } from './habitacion.model';
+import { Habitacion, Reservacion } from './habitacion.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Usuario } from '../Usuario/usuario.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HabitacionService {
   private habitaciones: Habitacion[] = [];
+  private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-    this.habitaciones = this.getAll();
+    this.habitaciones = this.getAllHabs();
+    this.reservaciones = this.getAllRes();
   }
 
-  getAll(){
+  //----*----*----Metodos de Habitacion----*----*----//
+  getAllHabs(){
     this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
           const habitaciones = [];
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              habitaciones.push(new Habitacion(
-                key,
-                resData[key].nombre,
-                resData[key].estado,
-                resData[key].categoria,
-                resData[key].capacidad,
-                resData[key].precio,
-                resData[key].provincia,
-                resData[key].descripcion,
-                resData[key].img
+              habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                resData[key].provincia, resData[key].descripcion, resData[key].img
               ));
             }
           }
@@ -39,25 +36,21 @@ export class HabitacionService {
     return [...this.habitaciones];
   }
 
-  getAllActiva(){
+  getAllHabsAct(){
     this.httpClient.get<{ [key: string]: Habitacion }>
-    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json?orderBy="estado"&equalTo=Activa')
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
           const habitaciones = [];
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              habitaciones.push(new Habitacion(
-                key,
-                resData[key].nombre,
-                resData[key].estado,
-                resData[key].categoria,
-                resData[key].capacidad,
-                resData[key].precio,
-                resData[key].provincia,
-                resData[key].descripcion,
-                resData[key].img
-              ));
+              //condicional estado Activa
+              if (resData[key].estado === 'Activa'){
+                habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                  resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                  resData[key].provincia, resData[key].descripcion, resData[key].img
+                ));
+              }
             }
           }
           this.habitaciones = habitaciones;
@@ -67,26 +60,74 @@ export class HabitacionService {
     return [...this.habitaciones];
   }
 
-  getAllActivaProvincia(prov: string){
+  getAllHabsActProv(prov: string){
     this.httpClient.get<{ [key: string]: Habitacion }>
-    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json?orderBy="estado"&equalTo=Activa')
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
           const habitaciones = [];
-          const habitacionesProv = [];
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              if(resData[key].provincia === prov){
-                habitaciones.push(new Habitacion(
-                  key,
-                  resData[key].nombre,
-                  resData[key].estado,
-                  resData[key].categoria,
-                  resData[key].capacidad,
-                  resData[key].precio,
-                  resData[key].provincia,
-                  resData[key].descripcion,
-                  resData[key].img
+              //condicional estado = Activa
+              if (resData[key].estado === 'Activa'){
+                //condicional de provincia = prov
+                if(resData[key].provincia === prov){
+                  habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                    resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                    resData[key].provincia, resData[key].descripcion, resData[key].img
+                  ));
+                }
+              }
+            }
+          }
+          this.habitaciones = habitaciones;
+          console.log(habitaciones);
+        }
+      );
+    return [...this.habitaciones];
+  }
+
+  getAllHabsActProvFechas(prov: string, checkIn: Date, checkOut: Date){
+    this.httpClient.get<{ [key: string]: Habitacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
+    .subscribe(
+        resData => {
+          const habitaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              //condicional estado = Activa
+              if (resData[key].estado === 'Activa'){
+                //condicional de provincia = prov
+                if(resData[key].provincia === prov){
+                  //falta condicional de habs sin reservacion entre checkin y checkout
+                  habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                    resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                    resData[key].provincia, resData[key].descripcion, resData[key].img
+                  ));
+                }
+              }
+            }
+          }
+          this.habitaciones = habitaciones;
+          console.log(habitaciones);
+        }
+      );
+    return [...this.habitaciones];
+  }
+
+  getAllHabsActFechas(checkIn: Date, checkOut: Date){
+    this.httpClient.get<{ [key: string]: Habitacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
+    .subscribe(
+        resData => {
+          const habitaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              //condicional estado Activa
+              if (resData[key].estado === 'Activa'){
+                habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                  resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                  resData[key].provincia, resData[key].descripcion, resData[key].img
                 ));
               }
             }
@@ -106,16 +147,8 @@ export class HabitacionService {
 
   addHabitacion(id: string, nombre: string, estado: string, categoria: string,
     capacidad: number, precio: number, provincia: string, descripcion: string, img: string){
-    const newHabitacion = new Habitacion(
-      id,
-      nombre,
-      estado,
-      categoria,
-      capacidad,
-      precio,
-      provincia,
-      descripcion,
-      img);
+    const newHabitacion = new Habitacion(id, nombre, estado, categoria, capacidad, precio,
+      provincia, descripcion, img);
     this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json',
     {
       ...newHabitacion,
@@ -150,9 +183,78 @@ export class HabitacionService {
     .subscribe(
       (resData) => {
         console.log(resData);
-        //newHabitacion.id = resData.name;
       },
     );
   }
+
+  //----*----*----Fin Metodos de Habitacion----*----*----//
+
+  //----*----*----Metodos de Reservacion----*----*----//
+
+  getAllRes(){
+    this.httpClient.get<{ [key: string]: Reservacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json')
+    .subscribe(
+        resData => {
+          const reservaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              reservaciones.push(new Reservacion(key, resData[key].usuario, resData[key].habitacion,
+                resData[key].checkIn, resData[key].checkOut, resData[key].precioTotal
+              ));
+            }
+          }
+          this.reservaciones = reservaciones;
+          console.log(reservaciones);
+        }
+      );
+    return [...this.reservaciones];
+  }
+
+  getAllResUsuario(usr: string){
+    this.httpClient.get<{ [key: string]: Reservacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json')
+    .subscribe(
+        resData => {
+          const reservaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              //condicional de usuario = prov
+              if(resData[key].usuario === usr){
+                reservaciones.push(new Reservacion(key, resData[key].usuario, resData[key].habitacion,
+                  resData[key].checkIn, resData[key].checkOut, resData[key].precioTotal
+                ));
+              }
+            }
+          }
+          this.reservaciones = reservaciones;
+          console.log(reservaciones);
+        }
+      );
+    return [...this.reservaciones];
+  }
+
+  getReservacion(reservacionId: string){
+    return {...this.reservaciones.find(
+      reservacion => reservacionId === reservacion.id
+    )};
+  }
+
+  addReservacion(id: string, usuario: string, habitacion: string, checkIn: Date,
+    checkOut: Date, precioTotal: number){
+    const newReservacion = new Reservacion(id, usuario, habitacion, checkIn, checkOut, precioTotal);
+    this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json',
+    {
+      ...newReservacion,
+      id: null
+    })
+    .subscribe(
+      (resData) => {
+        newReservacion.id = resData.name;
+      },
+    );
+    this.reservaciones.push(newReservacion);
+  }
+
+  //----*----*----Fin Metodos de Reservacion----*----*----//
 
 }
