@@ -10,8 +10,8 @@ import { Habitacion, Reservacion } from '../habitacion/habitacion.model';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-  habitaciones: Habitacion[];
-  reservaciones: Reservacion[];
+  //habitaciones: Habitacion[];
+  //reservaciones: Reservacion[];
   formBuscar: FormGroup;
   slides: { id: number;img: string}[] = [
     { id: 1,

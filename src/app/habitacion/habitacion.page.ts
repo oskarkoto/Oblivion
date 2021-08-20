@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Habitacion, Reservacion } from './habitacion.model';
 import { HabitacionService } from './habitacion.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -18,8 +17,6 @@ export class HabitacionPage implements OnInit {
     private habitacionServicio: HabitacionService,
     private activatedRoute: ActivatedRoute,
     private router: Router) {}
-
-
 
   ngOnInit() {
     //this.habitaciones = this.habitacionServicio.getAllHabsAct();
