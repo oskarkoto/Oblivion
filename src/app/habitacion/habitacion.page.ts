@@ -21,4 +21,9 @@ export class HabitacionPage implements OnInit {
     this.habitaciones = this.habitacionServicio.getAllHabs();
   }
 
+  ionViewDidEnter(){
+    console.log('onInitHabitacion');
+    this.habitaciones = this.habitacionServicio.getAllHabs();
+  }
+
 }
