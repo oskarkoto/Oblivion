@@ -11,7 +11,7 @@ export class HabitacionService {
   private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-    this.habitaciones = this.getAllHabs();
+    //this.habitaciones = this.getAllHabs();
     //this.reservaciones = this.getAllRes();
   }
 
@@ -22,6 +22,7 @@ export class HabitacionService {
   }
 
   //----*----*----Metodos de Habitacion----*----*----//
+
   getAllHabs(){
     console.log('entro a getAllHabs');
     this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
@@ -47,6 +48,7 @@ export class HabitacionService {
           console.log(habitaciones);
         }
       );
+      console.log('resultado del getAllHabs ' + this.habitaciones);
     return [...this.habitaciones];
   }
 
