@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomePage{
   slides: { id: number;img: string}[] = [
     { id: 1,
-      img: '/assets/img/inicio/hotel_inicio.jpg'}
+      img: '/assets/img/gif.gif'}
     ,
     { id: 2,
       img: '/assets/img/inicio/habitacion_inicio.jpg'}

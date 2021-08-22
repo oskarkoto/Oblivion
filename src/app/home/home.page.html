@@ -1,16 +1,16 @@
 <ion-header [translucent]="true">
 </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-title>
+      <img src="assets/img/Logo_Hotel.png" alt="LogoHotel" width="250px">
 
-<ion-content [fullscreen]="true">
-  <ion-slides pager="true" class="slide-full">
-    <ion-slide *ngFor="let slide of slides">
-      <img [src]="slide.img">
-    </ion-slide>
-  </ion-slides>
-  <ion-title align="center"><strong>Vacaciones en Familia</strong></ion-title>
-  <p align="center">Le damos la bienvenida a Oblivion Hotel & Resort. Reserva ahora tu habitación.</p>
-
-  <ion-tabs class="oblivion-tabs">
+    </ion-card-title>
+    <ion-card-subtitle>
+      Bienvenido, usuario
+    </ion-card-subtitle>
+  </ion-card>
+   <ion-tabs class="oblivion-tabs">
     <ion-tab-bar slot="bottom">
       <ion-tab-button [routerLink]="['/buscar']" tab="buscar">
         <ion-icon name="search-outline"></ion-icon>
