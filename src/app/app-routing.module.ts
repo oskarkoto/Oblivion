@@ -13,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'habitacion',
+    data: { preload: true } ,
     children: [
       {
         path: '',

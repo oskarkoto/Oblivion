@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Habitacion, Reservacion } from './habitacion.model';
+import { Habitacion } from './habitacion.model';
 import { HabitacionService } from './habitacion.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -11,20 +10,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HabitacionPage implements OnInit {
   habitaciones: Habitacion[];
-  reservaciones: Reservacion[];
-
-  constructor(private habitacionServicio: HabitacionService, private activatedRoute: ActivatedRoute) {}
+  constructor(private habitacionServicio: HabitacionService) {}
 
   ngOnInit() {
     console.log('onInit de Habitacion');
     this.habitaciones = this.habitacionServicio.getAllHabs();
-    //this.reservaciones = this.habitacionServicio.getAllRes();
   }
 
   ionViewWillEnter(){
     console.log('onViewWillEnter de Habitacion');
     this.habitaciones = this.habitacionServicio.getAllHabs();
-    //this.reservaciones = this.habitacionServicio.getAllRes();
   }
 
+  ionViewDidEnter(){
+    console.log('onViewWillEnter de Habitacion');
+   this.habitaciones = this.habitacionServicio.getAllHabs();
+  }
 }
