@@ -13,6 +13,7 @@ export class UsuarioService {
     this.usuarios = this.getAll();
   }
   getAll(){
+    console.log('getAllUsuario');
     this.httpClient.get<{ [key: string]: Usuario }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario.json')
     .subscribe(
         resData => {

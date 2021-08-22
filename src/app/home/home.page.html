@@ -10,41 +10,20 @@
   <ion-title align="center"><strong>Vacaciones en Familia</strong></ion-title>
   <p align="center">Le damos la bienvenida a Oblivion Hotel & Resort. Reserva ahora tu habitación.</p>
 
-  <form [formGroup]="formBuscar">
-    <ion-grid>
-      <ion-row>
-        <ion-col size-sm="6" offset-sm="3">
-          <ion-item>
-            <ion-label>Check-In</ion-label>
-            <ion-datetime placeholder="Fecha de Ingreso" formControlName="checkIn"></ion-datetime>
-          </ion-item>
-          <ion-item>
-            <ion-label>Check-Out</ion-label>
-            <ion-datetime placeholder="Fecha de Salida" formControlName="checkOut"></ion-datetime>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Ubicación</ion-label>
-             <ion-select value="San Jose" okText="Okay" cancelText="Cancelar" formControlName="provincia">
-              <ion-select-option value="San Jose">Oblivion San José</ion-select-option>
-              <ion-select-option value="Alajuela">Oblivion Alajuela</ion-select-option>
-              <ion-select-option value="Heredia">Oblivion Heredia</ion-select-option>
-              <ion-select-option value="Cartago">Oblivion Cartago</ion-select-option>
-              <ion-select-option value="Puntarenas">Oblivion Puntarenas</ion-select-option>
-              <ion-select-option value="Guanacaste">Oblivion Guanacaste</ion-select-option>
-              <ion-select-option value="Limon">Oblivion Limon</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-button (click)="searchFunction()"> Buscar </ion-button>
-      </ion-row>
-      <ion-row *ngIf="
-        !formBuscar.get('checkIn').valid &&
-        !formBuscar.get('checkOut').valid &&
-        !formBuscar.get('provincia').valid
-      ">
-      </ion-row>
-    </ion-grid>
-  </form>
+  <ion-tabs class="oblivion-tabs">
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button [routerLink]="['/buscar']" tab="buscar">
+        <ion-icon name="search-outline"></ion-icon>
+        <ion-label>Buscar</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/habitacion']" tab="habitacion">
+        <ion-icon name="bed-outline"></ion-icon>
+        <ion-label>Habitaciones</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [routerLink]="['/usuario']" tab="usuario">
+        <ion-icon name="people-outline"></ion-icon>
+        <ion-label>Usuarios</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 </ion-content>

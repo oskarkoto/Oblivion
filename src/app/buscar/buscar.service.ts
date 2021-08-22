@@ -1,4 +1,4 @@
-import { Habitacion, Reservacion } from './habitacion.model';
+import { Habitacion, Reservacion } from './../habitacion/habitacion.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
@@ -6,12 +6,12 @@ import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
-export class HabitacionService {
+export class BuscarService {
   private habitaciones: Habitacion[]=[];
   private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-    this.habitaciones = this.getAllHabs();
+    //this.habitaciones = this.getAllHabs();
     //this.reservaciones = this.getAllRes();
   }
 
@@ -22,33 +22,6 @@ export class HabitacionService {
   }
 
   //----*----*----Metodos de Habitacion----*----*----//
-  getAllHabs(){
-    console.log('entro a getAllHabs');
-    this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
-    .subscribe(
-        resData => {
-          const habitaciones = [];
-          for( const key in resData){
-            if(resData.hasOwnProperty(key)){
-              habitaciones.push(new Habitacion(
-                key,
-                resData[key].nombre,
-                resData[key].estado,
-                resData[key].categoria,
-                resData[key].capacidad,
-                resData[key].precio,
-                resData[key].provincia,
-                resData[key].descripcion,
-                resData[key].img
-              ));
-            }
-          }
-          this.habitaciones = habitaciones;
-          console.log(habitaciones);
-        }
-      );
-    return [...this.habitaciones];
-  }
 
   getAllHabsAct(){
     console.log('entro a getAllHabsAct');
@@ -83,7 +56,7 @@ export class HabitacionService {
   }
 
   getAllHabsActProv(prov: string){
-    console.log('entro a getAllHabsActProv');
+    console.log('entro a getAllHabsActProv con valor' + prov);
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(

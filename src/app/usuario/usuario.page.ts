@@ -12,14 +12,17 @@ export class UsuarioPage implements OnInit {
   constructor(private usuarioServicio: UsuarioService) { }
 
   ngOnInit() {
+    console.log('onInitUsuario');
     this.usuarios = this.usuarioServicio.getAll();
   }
 
   ionViewWillEnter(){
+    console.log('onWillEnterUsuario');
     this.usuarios = this.usuarioServicio.getAll();
   }
 
   ionViewDidEnter(){
+    console.log('onInitDidEnterUsuario');
     this.usuarios = this.usuarioServicio.getAll();
   }
 

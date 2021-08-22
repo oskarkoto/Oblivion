@@ -111,7 +111,32 @@ const routes: Routes = [
         ]
       }
     ]
+  },
+  {
+    path: 'buscar',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./buscar/buscar.module').then(
+            m => m.BuscarPageModule
+          )
+      },
+      {
+        path: ':resultadoID',
+        loadChildren: () => import('./buscar/resultados/resultados.module').then(
+          m => m.ResultadosPageModule
+        )
+      },
+      {
+        path: ':resultadoID/:habitacionID',
+        loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      }
+    ]
   }
+
 ];
 
 @NgModule({

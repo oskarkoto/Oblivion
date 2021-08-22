@@ -19,7 +19,8 @@ const routes: Routes = [
   {
     path: 'editar',
     loadChildren: () => import('./editar/editar.module').then( m => m.EditarPageModule)
-  },  {
+  },
+  {
     path: 'crear-reservacion',
     loadChildren: () => import('./crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
   },
@@ -30,9 +31,7 @@ const routes: Routes = [
   {
     path: 'reservacion',
     loadChildren: () => import('./reservacion/reservacion.module').then( m => m.ReservacionPageModule)
-  },
-
-
+  }
 ];
 
 @NgModule({
