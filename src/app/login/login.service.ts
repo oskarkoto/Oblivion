@@ -7,10 +7,12 @@ import { AngularFireAuth } from '@angular/fire/auth';
   providedIn: 'root'
 })
 export class LoginService {
-  private usuario: Usuario [] = [];
+  public usuario: Usuario [] = [];
   private allUsuarios: Usuario [] = [];
   private afAuth: AngularFireAuth;
-  constructor(private httpClient: HttpClient){  }
+  constructor(private httpClient: HttpClient){
+    this.allUsuarios = this.getAll();
+   }
 
   getAll(){
     console.log('getAllUsuario');
@@ -28,17 +30,15 @@ export class LoginService {
                 resData[key].telefono,
                 resData[key].correo,
                 resData[key].password,
-                resData[key].tipo,
+                resData[key].tipo
               ));
             }
           }
-          this.usuario = usuarios;
-          console.log(usuarios);
-          this.allUsuarios = this.usuario ;
+          this.allUsuarios = usuarios ;
           console.log('allUsuarios');
-          return this.allUsuarios;
         }
       );
+      return [...this.allUsuarios];
   }
 
   registrarUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
@@ -66,10 +66,19 @@ export class LoginService {
   }
 
   loginUser(correo: string,password: string){
-    return {...this.usuario.find(
-      usuario => correo === usuario.correo && password === usuario.password
+    for(let i = 0; i<= 1; i++){
+      this.getAll();
+    }
+    this.usuario.pop();
+    this.usuario.push(this.allUsuarios.find(
+      // eslint-disable-next-line arrow-body-style
+      (user) => {
+        return user.correo === correo && user.password === password;
+      }
     )
-  };
+  );
+  console.log(this.usuario);
+  return [...this.usuario];
   }
 
   logout(usuarioId: string){

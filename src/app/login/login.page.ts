@@ -19,7 +19,7 @@ export interface FILE {
 })
 export class LoginPage implements OnInit {
   formCrear: FormGroup;
-  usuarioLogueado  = [];
+  usuarioLogueado: Usuario[]=[];
   constructor(
     private angularFirestore: AngularFirestore,
     private angularFireStorage: AngularFireStorage,
@@ -43,18 +43,14 @@ export class LoginPage implements OnInit {
     if(!this.formCrear.valid){
       return;
     }
-    console.log(this.formCrear);
-    this.usuarioLogueado = [];
-    this.usuarioLogueado[0] = this.loginService.loginUser(
-      this.formCrear.value.correo,
-      this.formCrear.value.password
-    );
-    if(this.usuarioLogueado === undefined){
+    this.usuarioLogueado[0] = this.loginService.loginUser(this.formCrear.value.correo,
+      this.formCrear.value.password)[0];
+      console.log(this.formCrear.value.correo);
+      console.log(this.formCrear.value.password);
+    if(this.usuarioLogueado[0] === undefined){
       console.log('El usuario no existe');
-      this.router.navigate(['/login']);
     } else {
       console.log('El usuario existe');
-      console.log(this.usuarioLogueado);
       this.router.navigate(['/home']);
     }
   }

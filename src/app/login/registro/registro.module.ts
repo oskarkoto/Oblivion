@@ -5,13 +5,13 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { RegistroPageRoutingModule } from './registro-routing.module';
-
+import { ReactiveFormsModule } from '@angular/forms';
 import { RegistroPage } from './registro.page';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     IonicModule,
     RegistroPageRoutingModule
   ],

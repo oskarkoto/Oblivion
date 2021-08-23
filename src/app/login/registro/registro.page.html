@@ -8,5 +8,80 @@
 </ion-header>
 
 <ion-content>
-
+  <form [formGroup]="formCrear">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="nombre"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Primer Apellido</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="primerApellido"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Segundo Apellido</ion-label>
+            <ion-input type="text" autocomplete autocorrect formControlName="segundoApellido"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Telefono</ion-label>
+            <ion-input type="tel" autocomplete autocorrect formControlName="telefono"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Correo electrónico</ion-label>
+            <ion-input type="email" autocomplete autocorrect formControlName="correo"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" autocomplete autocorrect formControlName="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Tipo</ion-label>
+            <ion-input  formControlName="tipo">Cliente</ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="
+        !formCrear.get('nombre').valid &&
+        !formCrear.get('primerApellido').valid &&
+        !formCrear.get('segundoApellido').valid &&
+        !formCrear.get('telefono').valid &&
+        !formCrear.get('correo').valid &&
+        !formCrear.get('password').valid &&
+        !formCrear.get('tipo').valid
+      ">
+        <ion-col  size-sm="6" offset-sm="3">
+          <p>Todos los campos son requeridos</p>
+        </ion-col>
+      </ion-row>
+      <ion-buttons>
+        <ion-button (click)="registrarUsuario()">Completar</ion-button>
+        </ion-buttons>
+    </ion-grid>
+  </form>
 </ion-content>
