@@ -37,6 +37,7 @@ export class LoginService {
             }
           }
           this.allUsuarios = usuarios ;
+          this.usuarioService.usuarios = this.allUsuarios;
           console.log('allUsuarios');
         }
       );
