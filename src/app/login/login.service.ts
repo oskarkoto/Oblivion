@@ -2,15 +2,17 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../usuario/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
   public usuario: Usuario [] = [];
-  private allUsuarios: Usuario [] = [];
+  public allUsuarios: Usuario [] = [];
   private afAuth: AngularFireAuth;
-  constructor(private httpClient: HttpClient){
+  //private usuarioService: UsuarioService;
+  constructor(private httpClient: HttpClient, private usuarioService: UsuarioService){
     this.allUsuarios = this.getAll();
    }
 
@@ -77,11 +79,13 @@ export class LoginService {
       }
     )
   );
-  console.log(this.usuario);
+  console.log('LOGIN ' + this.usuario[0].nombre);
+  this.usuarioService.usuario[0] = this.usuario[0];
   return [...this.usuario];
   }
 
   logout(usuarioId: string){
     this.usuario = [];
+    this.usuarioService.usuario = [];
   };
 }
