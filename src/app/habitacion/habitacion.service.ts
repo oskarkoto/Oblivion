@@ -6,19 +6,14 @@ import { DatePipe } from '@angular/common';
 @Injectable({
   providedIn: 'root'
 })
+
 export class HabitacionService {
-  private habitaciones: Habitacion[]=[];
+  private habitaciones: Habitacion [] = [];
   private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
     //this.habitaciones = this.getAllHabs();
     //this.reservaciones = this.getAllRes();
-  }
-
-  // format date in typescript
-  getFormatedDate(date: Date, format: string) {
-    const datePipe = new DatePipe('en-US');
-    return datePipe.transform(date, format);
   }
 
   //----*----*----Metodos de Habitacion----*----*----//
@@ -52,29 +47,31 @@ export class HabitacionService {
     return [...this.habitaciones];
   }
 
+    // format date in typescript
+  getFormatedDate(date: Date, format: string) {
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(date, format);
+  }
+
   getAllHabsAct(){
-    console.log('entro a getAllHabsAct');
-    this.httpClient.get<{ [key: string]: Habitacion }>
-    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
+    console.log('entro a getAllHabs');
+    this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
           const habitaciones = [];
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              //condicional estado Activa
-              if (resData[key].estado === 'Activa'){
-                habitaciones.push(new Habitacion(
-                  key,
-                  resData[key].nombre,
-                  resData[key].estado,
-                  resData[key].categoria,
-                  resData[key].capacidad,
-                  resData[key].precio,
-                  resData[key].provincia,
-                  resData[key].descripcion,
-                  resData[key].img
-                ));
-              }
+              habitaciones.push(new Habitacion(
+                key,
+                resData[key].nombre,
+                resData[key].estado,
+                resData[key].categoria,
+                resData[key].capacidad,
+                resData[key].precio,
+                resData[key].provincia,
+                resData[key].descripcion,
+                resData[key].img
+              ));
             }
           }
           this.habitaciones = habitaciones;

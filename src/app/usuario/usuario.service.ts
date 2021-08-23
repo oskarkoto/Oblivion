@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class UsuarioService {
-  private usuarios: Usuario[] = [];
+  public usuarios: Usuario[] = [];
+  public usuario: Usuario[] = [];
   constructor(private httpClient: HttpClient)
   {
     this.usuarios = this.getAll();

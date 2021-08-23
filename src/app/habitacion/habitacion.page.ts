@@ -9,11 +9,10 @@ import { HabitacionService } from './habitacion.service';
 })
 export class HabitacionPage implements OnInit {
   habitaciones: Habitacion[];
-  constructor(private habitacionServicio: HabitacionService) { }
+  constructor(private habitacionServicio: HabitacionService) {}
 
   ngOnInit() {
     this.habitaciones = this.habitacionServicio.getAllHabs();
-    console.log('onInitHabitacion');
   }
 
   ionViewWillEnter(){

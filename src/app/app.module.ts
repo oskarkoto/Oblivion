@@ -11,13 +11,14 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FileSizePipe } from './file-size.pipe';
 
 
 @NgModule({
   declarations: [AppComponent, FileSizePipe],
   entryComponents: [],
-  imports: [BrowserModule, HttpClientModule,  IonicModule.forRoot(), AppRoutingModule,
+  imports: [BrowserModule, HttpClientModule,  IonicModule.forRoot(), AppRoutingModule,AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireStorageModule, AngularFirestoreModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],

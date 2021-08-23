@@ -1,0 +1,27 @@
+ion-content{
+  --background: url(/assets/img/inicio/LoginBack.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-card{
+  margin: auto;
+  width: 90%;
+  height: 60%;
+  background: rgba(255, 255, 255, 0.356);
+  top: 30%;
+}
+ion-card-title{
+  font-weight: bolder;
+  color: black;
+}
+ion-label{
+  font-family: "Century Gothic";
+  font-weight: bolder;
+  text-align: center;
+}
+
+.alerta{
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 2px 3px 3px black;
+}
