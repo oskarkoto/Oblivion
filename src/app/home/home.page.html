@@ -12,15 +12,15 @@
   </ion-card>
    <ion-tabs class="oblivion-tabs">
     <ion-tab-bar slot="bottom">
-      <ion-tab-button [routerLink]="['/buscar']">
+      <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Cliente'" [routerLink]="['/buscar']">
         <ion-icon name="search-outline"></ion-icon>
         <ion-label>Buscar</ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/habitacion']">
+      <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/habitacion']">
         <ion-icon name="bed-outline"></ion-icon>
         <ion-label>Habitaciones</ion-label>
       </ion-tab-button>
-      <ion-tab-button [routerLink]="['/usuario']">
+      <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/usuario']">
         <ion-icon name="people-outline"></ion-icon>
         <ion-label>Usuarios</ion-label>
       </ion-tab-button>
