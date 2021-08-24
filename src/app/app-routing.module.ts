@@ -16,8 +16,30 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
+    path: 'perfil',
+    children:[
+      {
+        path: '',
+        loadChildren: () => import('./login/perfil/perfil.module').then(m => m.PerfilPageModule)
+      },
+      {
+        path: 'editar',
+        children: [
+          {
+            path: ':usuarioID',
+            loadChildren: () => import('./login/perfil/editar/editar.module').then(m => m.EditarPageModule)
+          }
+        ]
+      },
+    ]
+  },
+  {
     path: 'registro',
     loadChildren: () => import('./login/registro/registro.module').then(m => m.RegistroPageModule)
+  },
+  {
+    path: 'logout',
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
   {
     path: 'habitacion',

@@ -1,0 +1,17 @@
+ion-content, ion-item, ion-item-divider{
+  --background: #38789e !important;
+}
+ion-avatar{
+  width: 30% !important;
+  height: auto !important;
+}
+
+ion-item, ion-item-divider{
+  color: white !important;
+}
+ion-title{
+  font-family: "Century Gothic";
+  font-weight: bolder;
+  margin-left: 5px;
+  text-shadow: 2px 2px 2px black;
+}

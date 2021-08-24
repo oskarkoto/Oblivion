@@ -85,8 +85,8 @@ export class LoginService {
   return [...this.usuario];
   }
 
-  logout(usuarioId: string){
-    this.usuario = [];
+  logout(){
     this.usuarioService.usuario = [];
+    this.usuario.pop();
   };
 }

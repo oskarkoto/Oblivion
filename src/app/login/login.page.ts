@@ -54,4 +54,10 @@ export class LoginPage implements OnInit {
       this.router.navigate(['/home']);
     }
   }
+  logout(){
+    this.usuarioLogueado[0] = this.loginService.logout()[0];
+    this.usuarioLogueado = [];
+      console.log(this.usuarioLogueado[0]);
+      this.router.navigate(['/login']);
+  }
 }
