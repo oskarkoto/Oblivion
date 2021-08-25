@@ -144,7 +144,7 @@ export class ResultadosPage implements OnInit {
     );
   }**/
 
-  /**ionViewDidEnter(){
+  ionViewDidEnter(){
     console.log('ionViewDidEnter de Resultados');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
@@ -205,6 +205,6 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-  }**/
+  }
 
 }
