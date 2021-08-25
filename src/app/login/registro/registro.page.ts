@@ -53,10 +53,6 @@ ngOnInit() {
     password: new FormControl(null, {
       updateOn: 'blur',
       validators: [Validators.required]
-    }),
-    tipo: new FormControl('Cliente', {
-      updateOn: 'blur',
-      validators: [Validators.required]
     })
   });
 }
@@ -74,7 +70,7 @@ addUsuario(){
     this.formCrear.value.telefono,
     this.formCrear.value.correo,
     this.formCrear.value.password,
-    this.formCrear.value.tipo,
+    'Cliente'
   );
   this.router.navigate(['/login']);
 }
