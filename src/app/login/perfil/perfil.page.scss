@@ -16,10 +16,17 @@ ion-title{
   text-shadow: 2px 2px 2px black;
 }
 ion-item ion-tab-button ion-label{
-  margin-left: 2px;
+  margin-left: 3px;
   font-size: 15px;
 }
 .oblivion-tabs ion-tab-button ion-label{
   font-size: 12px;
   margin:auto;
+}
+.logout{
+  color: #e8e7e5 !important;
+}
+
+.logout ion-icon{
+  margin-right: 2px;
 }

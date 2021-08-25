@@ -13,17 +13,11 @@ ion-card{
 ion-card-subtitle{
   font-family: "Century Gothic";
   font-weight: bolder;
-  text-align: center;
+  text-align: justify;
+  margin-left:5px;
+  margin-right:5px;
   color:white;
-  text-shadow: 2px 1px 3px gray;
-}
-ion-card-subtitle p{
-  font-family: "Century Gothic";
-  font-weight: bold;
-  color: white;
   text-shadow: 2px 1px 3px black;
-  margin-left: 2px;
-  margin-right: 2px;
 }
 ion-card-content p{
   font-family:'Lucida Sans';
@@ -33,6 +27,7 @@ ion-card-content p{
   text-align: center;
   text-shadow: 2px 2px 3px black;
 }
+
 .oblivion-tabs ion-tab-button ion-label{
   font-size: 12px;
   margin:auto;

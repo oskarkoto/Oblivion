@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/habitacion"></ion-back-button>
     </ion-buttons>
-    <ion-title>Crear</ion-title>
+    <ion-title>Agregar</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="addFunction()">
         <ion-icon name="checkmark" slot="icon-only"></ion-icon>
@@ -27,7 +27,7 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Estado</ion-label>
-            <ion-select value="Activa" okText="Okay" cancelText="Cancelar" formControlName="estado">
+            <ion-select value="Activa" okText="Confirmar" cancelText="Cancelar" formControlName="estado">
               <ion-select-option value="Activa">Activa</ion-select-option>
               <ion-select-option value="Inactiva">Inactiva</ion-select-option>
             </ion-select>
@@ -83,25 +83,22 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">Descripcion</ion-label>
+            <ion-label position="floating">Descripción</ion-label>
             <ion-textarea type="text" autocomplete autocorrect formControlName="descripcion"></ion-textarea>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size-sm="6" offset-sm="3">
+        <ion-col>
           <ion-card *ngIf="!isImgUploading && !isImgUploaded">
             <ion-card-header>
               <ion-card-title>Imagen</ion-card-title>
             </ion-card-header>
-            <ion-button color="danger">
+            <ion-button>
               <input type="file" class="upload" (change)="fileUpload($event.target.files)" formControlName="img"/>
             </ion-button>
           </ion-card>
-          <ion-card *ngIf="isImgUploading && !isImgUploaded">
-            <ion-card-header>
-              <ion-card-title>Archivo Seleccionado: <b>{{ fileName }}</b></ion-card-title>
-            </ion-card-header>
+          <ion-card class="carga" *ngIf="isImgUploading && !isImgUploaded">
             <ion-card-content>
               <div *ngIf="progressNum | async as percentage">
                 Progreso: {{ percentage | number }}%
@@ -120,14 +117,10 @@
           </ion-card>
           <ion-card *ngIf="!isImgUploading && isImgUploaded">
             <ion-card-header>
-              <ion-card-title>
-                <b>{{ fileName }}</b> Cargado
-              </ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <div *ngIf="fileUploadedPath | async as fileUrl">
                 <img [src]="fileUrl" />
-                <a [href]="fileUrl" rel="nofollow" target="_blank"><br>Descargar Imagen</a>
               </div>
             </ion-card-content>
           </ion-card>
@@ -144,7 +137,7 @@
         !formCrear.get('img').valid
       ">
         <ion-col  size-sm="6" offset-sm="3">
-          <p>Todos los campos son requeridos</p>
+          <p>* Todos los campos son requeridos</p>
         </ion-col>
       </ion-row>
     </ion-grid>
