@@ -22,11 +22,11 @@ export class DetallePage implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
-        if(!paramMap.has('habitacionId')){
+        if(!paramMap.has('habitacionID')){
           //Alerta: No existe Habitación
           return;
         }
-        const habitacionId = paramMap.get('habitacionId');
+        const habitacionId = paramMap.get('habitacionID');
         this.habitacion = this.habitacionServicio.getHabitacion(habitacionId);
         console.log('recibo habitacion' + this.habitacion);
       }

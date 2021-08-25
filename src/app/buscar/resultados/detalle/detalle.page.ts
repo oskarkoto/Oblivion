@@ -23,12 +23,12 @@ export class DetallePage implements OnInit {
     console.log('entro onInit Resultados Detalle');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
-        if(!paramMap.has('habitacionId')){
-          console.log('sin habitacionId');
+        if(!paramMap.has('habitacionID')){
+          console.log('sin habitacionID');
           //Alerta: No existe Habitación
           return;
         }
-        const habitacionId = paramMap.get('habitacionId');
+        const habitacionId = paramMap.get('habitacionID');
         this.habitacion = this.buscarServicio.getHabitacion(habitacionId);
         console.log('recibo habitacion' + this.habitacion);
       }

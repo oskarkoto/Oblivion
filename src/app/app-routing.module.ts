@@ -11,10 +11,12 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
+
   {
     path: 'perfil',
     children:[
@@ -33,14 +35,17 @@ const routes: Routes = [
       },
     ]
   },
+
   {
     path: 'registro',
     loadChildren: () => import('./login/registro/registro.module').then(m => m.RegistroPageModule)
   },
+
   {
     path: 'logout',
     loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
   },
+
   {
     path: 'habitacion',
     data: { preload: true } ,
@@ -108,6 +113,7 @@ const routes: Routes = [
       }
     ]
   },
+
   {
     path: 'usuario',
     children: [
@@ -143,6 +149,7 @@ const routes: Routes = [
       }
     ]
   },
+
   {
     path: 'buscar',
     children: [
@@ -155,16 +162,46 @@ const routes: Routes = [
       },
       {
         path: ':resultadoID',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('./buscar/resultados/resultados.module').then(
+                m => m.ResultadosPageModule
+              )
+          },
+          {
+            path: ':habitacionID/detalle',
+            loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
+              m => m.DetallePageModule
+            )
+          },
+          {
+            path: ':habitacionID',
+            loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
+              m => m.DetallePageModule
+            )
+          }
+        ]
+      }
+      /**{
+        path: ':resultadoID',
         loadChildren: () => import('./buscar/resultados/resultados.module').then(
           m => m.ResultadosPageModule
         )
-      },
+      }
       {
         path: ':resultadoID/:habitacionID',
         loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
           m => m.DetallePageModule
         )
-      }
+      },
+      {
+        path: 'resultados/:habitacionID',
+        loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      }**/
     ]
   },
   {

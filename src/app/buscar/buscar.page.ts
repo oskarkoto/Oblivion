@@ -32,40 +32,6 @@ export class BuscarPage implements OnInit {
     });
   }
 
-  /**ionViewWillEnter() {
-    this.formBuscar = new FormGroup({
-      checkIn: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      }),
-      checkOut: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      }),
-      provincia: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      })
-    });
-  }
-
-  ionViewDidEnter() {
-    this.formBuscar = new FormGroup({
-      checkIn: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      }),
-      checkOut: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      }),
-      provincia: new FormControl(null, {
-        updateOn: 'blur',
-        validators:[]
-      })
-    });
-  }**/
-
   searchFunction(){
     if(!this.formBuscar.valid){
       return;
