@@ -58,7 +58,7 @@ const routes: Routes = [
           )
       },
       {
-        path: ':habitacionId',
+        path: ':habitacionID',
         loadChildren: () => import('./habitacion/detalle/detalle.module').then(
           m => m.DetallePageModule
         )

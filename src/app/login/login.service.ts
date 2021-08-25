@@ -42,6 +42,7 @@ export class LoginService {
       );
       return [...this.allUsuarios];
   }
+
   loginUser(correo: string,password: string){
     for(let i = 0; i<= 1; i++){
       this.getAll();
@@ -58,6 +59,7 @@ export class LoginService {
   this.usuarioService.usuario[0] = this.usuario[0];
   return [...this.usuario];
   }
+
   logout(){
     this.usuarioService.usuario[0] = this.usuario.pop();
   };

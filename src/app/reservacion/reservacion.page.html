@@ -1,9 +1,34 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>reservacion</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-card *ngFor="let reservacion of reservaciones" [routerLink]="['./', reservacion.id]">
+    <ion-row>
+        <ion-col col-9>
+            <ion-item-divider width="20px"><strong>{{reservacion.id}}</strong></ion-item-divider>
+        <ion-card-content>
+            <ion-row>
+              <ion-text> {{reservacion.usuario}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text><strong> <ion-icon name="people-outline" style="margin-left: 5px;margin-right: 5px;"></ion-icon> {{reservacion.usuario}}</strong></ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text> {{reservacion.checkIn}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text> {{reservacion.checkOut}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text> {{reservacion.precioTotal}}</ion-text>
+            </ion-row>
+          </ion-card-content>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>

@@ -66,23 +66,26 @@ export class BuscarPage implements OnInit {
         if (!this.formBuscar.value.provincia){
           //busco habitaciones activas con filtro checkIn y checkOut
           console.log('con checkin y checkout de parametro');
-          const dCheckIn = new Date(this.formBuscar.value.checkIn);
-          const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+          const fCheckIn = new Date(this.formBuscar.value.checkIn);
+          console.log('fCheckIn: ' + fCheckIn);
+          //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
           this.buscarServicio.myCheckIn = this.formBuscar.value.checkIn;
-          const dCheckOut = new Date(this.buscarServicio.myCheckOut);
-          const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+          const fCheckOut = new Date(this.formBuscar.value.checkOut);
+          //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
           this.buscarServicio.myCheckOut = this.formBuscar.value.checkOut;
           this.buscarServicio.myProvincia = '';
+          console.log('Envío '+ fCheckIn + ' y '+ fCheckOut + ' a getAllHabsActFechas');
           this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
+          console.log('recibo de getAllHabsActFechas');
           this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
           { checkOut: fCheckOut }]);
         } else {
           //busco habitaciones activas con filtro checkIn, checkOut y Provincia
-          const dCheckIn = new Date(this.formBuscar.value.checkIn);
-          const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+          const fCheckIn = new Date(this.formBuscar.value.checkIn);
+          //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
           this.buscarServicio.myCheckIn = this.formBuscar.value.checkIn;
-          const dCheckOut = new Date(this.buscarServicio.myCheckOut);
-          const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+          const fCheckOut = new Date(this.buscarServicio.myCheckOut);
+          //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
           this.buscarServicio.myCheckOut = this.formBuscar.value.checkOut;
           this.buscarServicio.myProvincia = this.formBuscar.value.provincia;
           this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(this.buscarServicio.myProvincia,

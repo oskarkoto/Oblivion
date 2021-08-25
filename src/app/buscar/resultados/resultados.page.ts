@@ -39,10 +39,10 @@ export class ResultadosPage implements OnInit {
               return;
             } else {
               //devuelvo todas las habitaciones activas sin reservaciones entre checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
               console.log('de onInit a getAllHabsActFechas ' + this.buscarServicio.habitaciones);
@@ -66,10 +66,10 @@ export class ResultadosPage implements OnInit {
             } else {
               //retorno todas las habs activas, de la provincia seleccionada y sin reservaciones
               //entre el checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(paramMap.get('provincia'),
               fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
@@ -81,7 +81,7 @@ export class ResultadosPage implements OnInit {
     );
   }
 
-  ionViewWillEnter(){
+  /**ionViewWillEnter(){
     console.log('ionViewWillEnter de Resultados');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
@@ -102,10 +102,10 @@ export class ResultadosPage implements OnInit {
               return;
             } else {
               //devuelvo todas las habitaciones activas sin reservaciones entre checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
               console.log('de ionViewWillEnter a getAllHabsActFechas ' + this.buscarServicio.habitaciones);
@@ -129,10 +129,10 @@ export class ResultadosPage implements OnInit {
             } else {
               //retorno todas las habs activas, de la provincia seleccionada y sin reservaciones
               //entre el checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(paramMap.get('provincia'),
               fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
@@ -142,9 +142,9 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-  }
+  }**/
 
-  ionViewDidEnter(){
+  /**ionViewDidEnter(){
     console.log('ionViewDidEnter de Resultados');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
@@ -165,10 +165,10 @@ export class ResultadosPage implements OnInit {
               return;
             } else {
               //devuelvo todas las habitaciones activas sin reservaciones entre checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
               console.log('de ionViewDidEnter a getAllHabsActFechas ' + this.buscarServicio.habitaciones);
@@ -192,10 +192,10 @@ export class ResultadosPage implements OnInit {
             } else {
               //retorno todas las habs activas, de la provincia seleccionada y sin reservaciones
               //entre el checkIn y checkOut
-              const dCheckIn = new Date(paramMap.get('checkIn'));
-              const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
-              const dCheckOut = new Date(paramMap.get('checkOut'));
-              const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+              const fCheckIn = new Date(paramMap.get('checkIn'));
+              //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+              const fCheckOut = new Date(paramMap.get('checkOut'));
+              //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(paramMap.get('provincia'),
               fCheckIn, fCheckOut);
               this.buscarServicio.habitaciones = this.habitaciones;
@@ -205,6 +205,6 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-  }
+  }**/
 
 }

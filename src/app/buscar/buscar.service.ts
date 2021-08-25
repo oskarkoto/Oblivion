@@ -90,23 +90,81 @@ export class BuscarService {
   }
 
   getAllHabsActProvFechas(prov: string, checkIn: Date, checkOut: Date){
-    console.log('entro a getAllHabsActProvFechas');
+    console.log('entro a getAllHabsActProvFechas con valores ' + prov + ' '
+    + checkIn + ' ' + checkOut);
+    this.httpClient.get<{ [key: string]: Habitacion }>
+    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
+    .subscribe(
+      resData => {
+        const habitaciones = [];
+        //obtengo reservaciones existentes entre checkIn y checkOut
+        const reservaciones = this.getAllResBetweenDates(checkIn, checkOut);
+        console.log('Habitaciones devueltas por getAllResBetweenDates');
+        console.log(reservaciones);
+        for( const key in resData){
+          if(resData.hasOwnProperty(key)){
+            //condicional estado Activa
+            if (resData[key].estado === 'Activa'){
+              //valido si el arreglo de reservaciones regresó algun resultado
+              if (reservaciones.length === 0){
+                //condicional de provincia = prov
+                if(resData[key].provincia === prov){
+                  habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                    resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                    resData[key].provincia, resData[key].descripcion, resData[key].img
+                  ));
+                }
+              } else {
+                //valido si el arreglo de reservas contiene la habitacion que estoy revisando
+                if (!reservaciones.some(hab => hab.habitacion === resData[key].id)){
+                  //condicional de provincia = prov
+                  if(resData[key].provincia === prov){
+                    habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                      resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                      resData[key].provincia, resData[key].descripcion, resData[key].img
+                    ));
+                  }
+                }
+              }
+            }
+          }
+        }
+        this.habitaciones = habitaciones;
+        console.log(habitaciones);
+      }
+    );
+  return [...this.habitaciones];
+}
+
+  getAllHabsActFechas(checkIn: Date, checkOut: Date){
+    console.log('entro a getAllHabsActProvFechas con valores ' + checkIn + ' ' + checkOut);
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
           const habitaciones = [];
+          //obtengo reservaciones existentes entre checkIn y checkOut
+          const reservaciones = this.getAllResBetweenDates(checkIn, checkOut);
+          console.log('Habitaciones devueltas por getAllResBetweenDates');
+          console.log(reservaciones);
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              //condicional estado = Activa
+              //condicional estado Activa
               if (resData[key].estado === 'Activa'){
-                //condicional de provincia = prov
-                if(resData[key].provincia === prov){
-                  //TODO: condicional de habs sin reservacion entre checkin y checkout
+                //valido si el arreglo de reservaciones regresó algun resultado
+                if (reservaciones.length === 0){
                   habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
                     resData[key].categoria, resData[key].capacidad, resData[key].precio,
                     resData[key].provincia, resData[key].descripcion, resData[key].img
                   ));
+                } else {
+                  //valido si el arreglo de reservas contiene la habitacion que estoy revisando
+                  if (!reservaciones.some(hab => hab.habitacion === resData[key].id)){
+                    habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
+                      resData[key].categoria, resData[key].capacidad, resData[key].precio,
+                      resData[key].provincia, resData[key].descripcion, resData[key].img
+                    ));
+                  }
                 }
               }
             }
@@ -118,34 +176,9 @@ export class BuscarService {
     return [...this.habitaciones];
   }
 
-  getAllHabsActFechas(checkIn: Date, checkOut: Date){
-    console.log('entro a getAllHabsActFechas');
-    this.httpClient.get<{ [key: string]: Habitacion }>
-    ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
-    .subscribe(
-        resData => {
-          const habitaciones = [];
-          for( const key in resData){
-            if(resData.hasOwnProperty(key)){
-              //condicional estado Activa
-              if (resData[key].estado === 'Activa'){
-                //TODO: condicional de reservaciones entre checkin checkout
-                habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
-                  resData[key].categoria, resData[key].capacidad, resData[key].precio,
-                  resData[key].provincia, resData[key].descripcion, resData[key].img
-                ));
-              }
-            }
-          }
-          this.habitaciones = habitaciones;
-          console.log(habitaciones);
-        }
-      );
-    return [...this.habitaciones];
-  }
-
   getHabitacion(habitacionId: string){
-    console.log('entro a getHabitacion');
+    console.log('entro a getHabitacion con habitacion id: ');
+    console.log(habitacionId);
     return {...this.habitaciones.find(
       habitacion => habitacionId === habitacion.id
     )};
@@ -217,6 +250,28 @@ export class BuscarService {
     return [...this.reservaciones];
   }
 
+  getAllResBetweenDates(checkIn: Date, checkOut: Date){
+    this.httpClient.get<{ [key: string]: Reservacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json')
+    .subscribe(
+        resData => {
+          const reservaciones = [];
+          for( const key in resData){
+            if(resData.hasOwnProperty(key)){
+              if (!(resData[key].checkIn <= checkOut) && (resData[key].checkOut <= checkIn)){
+                reservaciones.push(new Reservacion(key, resData[key].usuario, resData[key].habitacion,
+                  resData[key].checkIn, resData[key].checkOut, resData[key].precioTotal
+                ));
+              }
+            }
+          }
+          console.log('Resultado de getAllResBetweenDates');
+          console.log(reservaciones);
+          return reservaciones;
+        }
+      );
+    return [...this.reservaciones];
+  }
+
   getAllResUsuario(usr: string){
     this.httpClient.get<{ [key: string]: Reservacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json')
@@ -225,7 +280,7 @@ export class BuscarService {
           const reservaciones = [];
           for( const key in resData){
             if(resData.hasOwnProperty(key)){
-              //condicional de usuario = prov
+              //TODO: condicional de usuario = prov
               if(resData[key].usuario === usr){
                 reservaciones.push(new Reservacion(key, resData[key].usuario, resData[key].habitacion,
                   resData[key].checkIn, resData[key].checkOut, resData[key].precioTotal
