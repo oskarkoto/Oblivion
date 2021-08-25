@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from './login.service';
-import { UsuarioService } from '../usuario/usuario.service';
 import { Usuario } from '../usuario/usuario.model';
 
 export interface FILE {
@@ -21,10 +18,7 @@ export class LoginPage implements OnInit {
   formCrear: FormGroup;
   usuarioLogueado: Usuario[]=[];
   constructor(
-    private angularFirestore: AngularFirestore,
-    private angularFireStorage: AngularFireStorage,
     private loginService: LoginService,
-    private usuarioService: UsuarioService,
     private router: Router
   ) {}
   ngOnInit() {
@@ -58,6 +52,6 @@ export class LoginPage implements OnInit {
     this.usuarioLogueado[0] = this.loginService.logout()[0];
     this.usuarioLogueado = [];
       console.log(this.usuarioLogueado[0]);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/']);
   }
 }
