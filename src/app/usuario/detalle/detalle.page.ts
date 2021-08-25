@@ -40,8 +40,11 @@ export class DetallePage implements OnInit {
           return;
         }
         const usuarioId = paramMap.get('usuarioId');
-        if (window.confirm('Do you really want to delete?')) {
+        if (window.confirm('¿Realmente desea borrar el usuario?')) {
          this.usuarioServicio.deleteUsuario(usuarioId);
+         setTimeout(()=>{
+          this.router.navigate(['/usuario']);
+        },500);
       }
       }
     );

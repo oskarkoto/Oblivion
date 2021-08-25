@@ -11,9 +11,15 @@ ion-item{
 ion-title{
   font-family: "Century Gothic";
   font-weight: bolder;
+  color: white !important;
   margin-left: 5px;
   text-shadow: 2px 2px 2px black;
 }
-ion-label{
+ion-item ion-tab-button ion-label{
   margin-left: 2px;
+  font-size: 15px;
+}
+.oblivion-tabs ion-tab-button ion-label{
+  font-size: 12px;
+  margin:auto;
 }

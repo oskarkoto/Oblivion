@@ -17,7 +17,7 @@
   <ion-list>
     <ion-item *ngFor="let reservacion of reservaciones" [routerLink]="['./', reservacion.id]">
       <ion-avatar>
-        <ion-img [src]="res.png"></ion-img>
+        <ion-img src="res.png"></ion-img>
       </ion-avatar>
       <ion-label>{{reservacion.id}} - {{reservacion.usuario}} - {{reservacion.habitacion}} - {{reservacion.checkIn}}
       - {{reservacion.checkOut}} - {{reservacion.precioTotal}}</ion-label>

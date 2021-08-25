@@ -65,7 +65,6 @@ export class UsuarioService {
         newUsuario.id = resData.name;
       },
     );
-    this.usuarios.push(newUsuario);
   }
 
   editUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
@@ -90,8 +89,6 @@ export class UsuarioService {
         console.log(resData);
       },
     );
-    this.usuario.pop();
-    this.usuario.push(newUsuario);
   }
 
   deleteUsuario(id: string){

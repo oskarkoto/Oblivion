@@ -9,10 +9,8 @@ import { UsuarioService } from '@app/usuario/usuario.service';
 })
 export class HomePage{
   public usuarioLogueado: Usuario[]=[];
-
   constructor(private usuarioService: UsuarioService) {
     this.usuarioLogueado.pop();
-    this.usuarioLogueado[0] = this.usuarioService.usuario[0];
+    this.usuarioLogueado = usuarioService.usuario;
   }
-
 }

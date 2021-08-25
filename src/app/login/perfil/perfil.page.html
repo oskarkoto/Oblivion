@@ -1,5 +1,4 @@
 <ion-content>
-  <div>
   <ion-item>
     <ion-avatar>
       <img *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" src="assets/img/admin_profile.png">
@@ -9,17 +8,16 @@
       <h3>{{this.usuarioLogueado[0].nombre}} {{this.usuarioLogueado[0].primerApellido}}</h3>
     </ion-title>
   </ion-item>
-  <ion-item>
+  <ion-item align="left">
     <ion-tab-button [routerLink]="['./editar']">
-      <ion-label> <ion-icon name='pencil'></ion-icon> Editar perfil</ion-label>
+      <ion-label><ion-icon name='pencil'></ion-icon> Editar perfil</ion-label>
     </ion-tab-button>
   </ion-item>
-  <ion-item>
+  <ion-item align="left">
     <ion-tab-button [routerLink]="['/logout']">
-      <ion-label><ion-icon name="log-out-outline"></ion-icon> Logout</ion-label>
+      <ion-label><ion-icon name="log-out-outline"></ion-icon> Cerrar Sesión</ion-label>
     </ion-tab-button>
   </ion-item>
-</div>
 <ion-tabs class="oblivion-tabs">
   <ion-tab-bar slot="bottom">
     <ion-tab-button [routerLink]="['/home']">
@@ -29,6 +27,14 @@
     <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Cliente'" [routerLink]="['/buscar']">
       <ion-icon name="search-outline"></ion-icon>
       <ion-label>Buscar</ion-label>
+    </ion-tab-button>
+    <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Cliente'" [routerLink]="['/reservacion']">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Mis Reservaciones</ion-label>
+    </ion-tab-button>
+    <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/reservacion']">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <ion-label>Reservaciones</ion-label>
     </ion-tab-button>
     <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/habitacion']">
       <ion-icon name="bed-outline"></ion-icon>

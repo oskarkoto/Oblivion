@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
     private router: Router
   ) {}
   ngOnInit() {
+    this.usuarioLogueado = [];
     this.formCrear = new FormGroup({
       correo: new FormControl(null, {
         updateOn: 'blur',
@@ -50,8 +51,7 @@ export class LoginPage implements OnInit {
   }
   logout(){
     this.usuarioLogueado[0] = this.loginService.logout()[0];
-    this.usuarioLogueado = [];
-      console.log(this.usuarioLogueado[0]);
-      this.router.navigate(['/']);
+    this.usuarioLogueado = undefined;
+      this.router.navigate(['/login']);
   }
 }
