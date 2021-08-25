@@ -184,24 +184,6 @@ const routes: Routes = [
           }
         ]
       }
-      /**{
-        path: ':resultadoID',
-        loadChildren: () => import('./buscar/resultados/resultados.module').then(
-          m => m.ResultadosPageModule
-        )
-      }
-      {
-        path: ':resultadoID/:habitacionID',
-        loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
-          m => m.DetallePageModule
-        )
-      },
-      {
-        path: 'resultados/:habitacionID',
-        loadChildren: () => import('./buscar/resultados/detalle/detalle.module').then(
-          m => m.DetallePageModule
-        )
-      }**/
     ]
   },
   {
