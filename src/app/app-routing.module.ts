@@ -79,37 +79,6 @@ const routes: Routes = [
             loadChildren: () => import('./habitacion/editar/editar.module').then( m => m.EditarPageModule)
           }
         ]
-      },
-      {
-        path: ':habitacionId/crear-reservacion',
-        loadChildren: () => import('./habitacion/crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
-      },
-      {
-        path: 'crear-reservacion',
-        children: [
-          {
-            path: ':habitacionId',
-            loadChildren: () => import('./habitacion/crear-reservacion/crear-reservacion.module').then( m => m.CrearReservacionPageModule)
-          }
-        ]
-      },
-      {
-        path: 'reservacion',
-        loadChildren: () => import('./habitacion/reservacion/reservacion.module').then( m => m.ReservacionPageModule)
-      },
-      {
-        path: ':habitacionId/detalle',
-        loadChildren: () => import('./habitacion/detalle-reservacion/detalle-reservacion.module').then( m => m.DetalleReservacionPageModule)
-      },
-      {
-        path: 'detalle-reservacion',
-        children: [
-          {
-            path: ':habitacionId',
-            loadChildren: () =>
-            import('./habitacion/detalle-reservacion/detalle-reservacion.module').then( m => m.DetalleReservacionPageModule)
-          }
-        ]
       }
     ]
   },
@@ -189,7 +158,26 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'reservacion',
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./reservacion/reservacion.module').then(
+            m => m.ReservacionPageModule
+          )
+      },
+      {
+        path: ':reservacionId',
+        loadChildren: () => import('./reservacion/detalle/detalle.module').then(
+          m => m.DetallePageModule
+        )
+      }
+    ]
   }
+
 
 
 ];
