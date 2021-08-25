@@ -79,7 +79,6 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-    //this.habitaciones = this.habitacionServicio.getAllHabsAct();
   }
 
   ionViewWillEnter(){
@@ -118,7 +117,7 @@ export class ResultadosPage implements OnInit {
               //devuelvo todas las habitaciones activas de la provincia seleccionada
               this.habitaciones = this.buscarServicio.getAllHabsActProv(paramMap.get('provincia'));
               this.buscarServicio.habitaciones = this.habitaciones;
-              console.log('de ionViewWillEnter a getAllHabsActProv ' + this.buscarServicio.habitaciones);
+              console.log('de onIionViewWillEnternit a getAllHabsActProv ' + this.buscarServicio.habitaciones);
             } else {
               //Alerta: no puedo buscar sin checkIn
               return;
@@ -143,7 +142,6 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-    //this.habitaciones = this.habitacionServicio.getAllHabsAct();
   }
 
   ionViewDidEnter(){
@@ -207,7 +205,6 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-    //this.habitaciones = this.habitacionServicio.getAllHabsAct();
   }
 
 }

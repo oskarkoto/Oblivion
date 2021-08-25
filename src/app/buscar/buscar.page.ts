@@ -42,13 +42,19 @@ export class BuscarPage implements OnInit {
         if (!this.formBuscar.value.provincia){
           //busco habitaciones activas sin filtros de checkin, checkout y provincia
           console.log('sin parametros hacia resultados');
+          this.buscarServicio.myProvincia = '';
+          this.buscarServicio.myCheckIn = '';
+          this.buscarServicio.myCheckOut = '';
           this.habitaciones = this.buscarServicio.getAllHabsAct();
           this.router.navigate(['/buscar/resultados']);
         } else {
           //busco habitaciones activas con filtro de provincia
           console.log('con provincia de parametro');
-          this.habitaciones = this.buscarServicio.getAllHabsActProv(this.formBuscar.value.provincia);
-          this.router.navigate(['/buscar/resultados', { provincia: this.formBuscar.value.provincia }]);
+          this.buscarServicio.myProvincia = this.formBuscar.value.provincia;
+          this.buscarServicio.myCheckIn = '';
+          this.buscarServicio.myCheckOut = '';
+          this.habitaciones = this.buscarServicio.getAllHabsActProv(this.buscarServicio.myProvincia);
+          this.router.navigate(['/buscar/resultados', { provincia: this.buscarServicio.myProvincia }]);
         }
       } else {
         //Alerta: no puedo buscar sin checkin
@@ -59,20 +65,30 @@ export class BuscarPage implements OnInit {
       } else {
         if (!this.formBuscar.value.provincia){
           //busco habitaciones activas con filtro checkIn y checkOut
-          const fCheckIn = this.formBuscar.value.checkIn;
-          const fCheckOut = this.formBuscar.value.checkOut;
           console.log('con checkin y checkout de parametro');
+          const dCheckIn = new Date(this.formBuscar.value.checkIn);
+          const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+          this.buscarServicio.myCheckIn = this.formBuscar.value.checkIn;
+          const dCheckOut = new Date(this.buscarServicio.myCheckOut);
+          const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+          this.buscarServicio.myCheckOut = this.formBuscar.value.checkOut;
+          this.buscarServicio.myProvincia = '';
           this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
-          this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn }, { checkOut: fCheckOut }]);
+          this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
+          { checkOut: fCheckOut }]);
         } else {
           //busco habitaciones activas con filtro checkIn, checkOut y Provincia
-          const uProvincia = this.formBuscar.value.provincia;
-          const fCheckIn = this.formBuscar.value.checkIn;
-          const fCheckOut = this.formBuscar.value.checkOut;
-          console.log('con checkin, checkout y provincia de parametro');
-          this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(uProvincia, fCheckIn, fCheckOut);
+          const dCheckIn = new Date(this.formBuscar.value.checkIn);
+          const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+          this.buscarServicio.myCheckIn = this.formBuscar.value.checkIn;
+          const dCheckOut = new Date(this.buscarServicio.myCheckOut);
+          const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+          this.buscarServicio.myCheckOut = this.formBuscar.value.checkOut;
+          this.buscarServicio.myProvincia = this.formBuscar.value.provincia;
+          this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(this.buscarServicio.myProvincia,
+            fCheckIn, fCheckOut);
           this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
-          { checkOut: fCheckOut }, { provincia: uProvincia }]);
+          { checkOut: fCheckOut }, { provincia: this.buscarServicio.myProvincia }]);
         }
       }
     }

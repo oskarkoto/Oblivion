@@ -8,9 +8,13 @@ import { DatePipe } from '@angular/common';
 })
 export class BuscarService {
   public habitaciones: Habitacion[] = [];
-  //public habitacion: Habitacion[] = [];
+  public habitacion: Habitacion[] = [];
   public reservaciones: Reservacion[] = [];
-  //public reservacion: Reservacion[] = [];
+  public reservacion: Reservacion[] = [];
+  public myProvincia: string;
+  public myCheckIn: string;
+  public myCheckOut: string;
+
   constructor(private httpClient: HttpClient)
   {
     //this.habitaciones = this.getAllHabs();
@@ -98,7 +102,7 @@ export class BuscarService {
               if (resData[key].estado === 'Activa'){
                 //condicional de provincia = prov
                 if(resData[key].provincia === prov){
-                  //falta condicional de habs sin reservacion entre checkin y checkout
+                  //TODO: condicional de habs sin reservacion entre checkin y checkout
                   habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
                     resData[key].categoria, resData[key].capacidad, resData[key].precio,
                     resData[key].provincia, resData[key].descripcion, resData[key].img
@@ -125,7 +129,7 @@ export class BuscarService {
             if(resData.hasOwnProperty(key)){
               //condicional estado Activa
               if (resData[key].estado === 'Activa'){
-                //falta condicional de reservaciones entre checkin checkout
+                //TODO: condicional de reservaciones entre checkin checkout
                 habitaciones.push(new Habitacion(key, resData[key].nombre, resData[key].estado,
                   resData[key].categoria, resData[key].capacidad, resData[key].precio,
                   resData[key].provincia, resData[key].descripcion, resData[key].img

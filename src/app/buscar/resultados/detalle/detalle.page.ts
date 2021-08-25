@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Habitacion, Reservacion } from '../../../habitacion/habitacion.model';
+import { HabitacionService } from '../../../habitacion/habitacion.service';
 import { BuscarService } from '../../buscar.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class DetallePage implements OnInit {
         }
         const habitacionId = paramMap.get('habitacionID');
         this.habitacion = this.buscarServicio.getHabitacion(habitacionId);
+        this.buscarServicio.habitacion[0] = this.habitacion;
         console.log('recibo habitacion' + this.habitacion);
       }
     );
