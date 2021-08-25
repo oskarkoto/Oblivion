@@ -43,30 +43,6 @@ export class LoginService {
       );
       return [...this.allUsuarios];
   }
-
-  registrarUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
-    telefono: string,correo: string,password: string,tipo: string){
-    const newUsuario = new Usuario(
-      id,
-      nombre,
-      primerApellido,
-      segundoApellido,
-      telefono,
-      correo,
-      password,
-      tipo);
-    this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario.json',
-    {
-      ...newUsuario,
-      id: null
-    })
-    .subscribe(
-      (resData) => {
-        newUsuario.id = resData.name;
-      },
-    );
-    this.usuario.push(newUsuario);
-  }
   loginUser(correo: string,password: string){
     for(let i = 0; i<= 1; i++){
       this.getAll();
