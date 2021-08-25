@@ -7,8 +7,10 @@ import { DatePipe } from '@angular/common';
   providedIn: 'root'
 })
 export class BuscarService {
-  private habitaciones: Habitacion[]=[];
-  private reservaciones: Reservacion[] = [];
+  public habitaciones: Habitacion[] = [];
+  public habitacion: Habitacion[] = [];
+  public reservaciones: Reservacion[] = [];
+  public reservacion: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
     //this.habitaciones = this.getAllHabs();
