@@ -11,6 +11,7 @@ export class HomePage{
   public usuarioLogueado: Usuario[]=[];
 
   constructor(private usuarioService: UsuarioService) {
+    this.usuarioLogueado.pop();
     this.usuarioLogueado[0]= usuarioService.usuario[0];
   }
 

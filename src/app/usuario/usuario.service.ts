@@ -10,9 +10,7 @@ export class UsuarioService {
   public usuarios: Usuario[] = [];
   public usuario: Usuario[] = [];
   constructor(private httpClient: HttpClient)
-  {
-    this.usuarios = this.getAll();
-  }
+  {  }
   getAll(){
     console.log('getAllUsuario');
     this.httpClient.get<{ [key: string]: Usuario }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario.json')
@@ -92,6 +90,8 @@ export class UsuarioService {
         console.log(resData);
       },
     );
+    this.usuario.pop();
+    this.usuario.push(newUsuario);
   }
 
   deleteUsuario(id: string){

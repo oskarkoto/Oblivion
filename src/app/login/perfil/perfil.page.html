@@ -1,4 +1,5 @@
 <ion-content>
+  <div>
   <ion-item>
     <ion-avatar>
       <img *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" src="assets/img/admin_profile.png">
@@ -7,16 +8,18 @@
     <ion-title>
       <h3>{{this.usuarioLogueado[0].nombre}} {{this.usuarioLogueado[0].primerApellido}}</h3>
     </ion-title>
+  </ion-item>
+  <ion-item>
     <ion-tab-button [routerLink]="['./editar']">
-      <ion-label>Editar perfil</ion-label>
+      <ion-label> <ion-icon name='pencil'></ion-icon> Editar perfil</ion-label>
     </ion-tab-button>
   </ion-item>
   <ion-item>
     <ion-tab-button [routerLink]="['/logout']">
-      <ion-icon name="log-out-outline"></ion-icon>
-      <ion-label>Logout</ion-label>
+      <ion-label><ion-icon name="log-out-outline"></ion-icon> Logout</ion-label>
     </ion-tab-button>
   </ion-item>
+</div>
 <ion-tabs class="oblivion-tabs">
   <ion-tab-bar slot="bottom">
     <ion-tab-button [routerLink]="['/home']">

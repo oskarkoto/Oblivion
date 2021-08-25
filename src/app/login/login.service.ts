@@ -67,7 +67,6 @@ export class LoginService {
     );
     this.usuario.push(newUsuario);
   }
-
   loginUser(correo: string,password: string){
     for(let i = 0; i<= 1; i++){
       this.getAll();
