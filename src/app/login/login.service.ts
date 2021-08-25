@@ -10,7 +10,6 @@ import { UsuarioService } from '../usuario/usuario.service';
 export class LoginService {
   public usuario: Usuario [] = [];
   public allUsuarios: Usuario [] = [];
-  private afAuth: AngularFireAuth;
   //private usuarioService: UsuarioService;
   constructor(private httpClient: HttpClient, private usuarioService: UsuarioService){
     this.allUsuarios = this.getAll();
@@ -59,9 +58,7 @@ export class LoginService {
   this.usuarioService.usuario[0] = this.usuario[0];
   return [...this.usuario];
   }
-
   logout(){
-    this.usuarioService.usuario = [];
-    this.usuario.pop();
+    this.usuarioService.usuario[0] = this.usuario.pop();
   };
 }
