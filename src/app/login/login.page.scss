@@ -5,23 +5,48 @@ ion-content{
 ion-card{
   margin: auto;
   width: 90%;
-  height: 60%;
-  background: rgba(255, 255, 255, 0.356);
-  top: 30%;
+  height: 50%;
+  background: rgba(0, 0, 0, 0);
+  top:36%;
+  box-shadow: none !important;
+}
+ion-card.titulo{
+  margin: auto;
+  width: 80%;
+  height: 10%;
+  background: rgba(0, 0, 0, 0);
+  top: 35%;
+  box-shadow: none !important;
 }
 ion-card-title{
   font-weight: bolder;
   color: black;
+  font-size: 25px;
+}
+ion-item{
+  box-shadow: 2px 2px 3px  black;
 }
 ion-label{
   font-family: "Century Gothic";
   font-weight: bolder;
-  text-align: center;
+  text-align: left;
 }
-
 .alerta{
   text-align: center;
   color: white;
   font-weight: bolder;
   text-shadow: 2px 3px 3px black;
+}
+
+p{
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  text-shadow: none !important;
+}
+
+ion-button{
+  font-family: "Century Gothic";
+  font-weight: bolder;
+  text-align: center;
 }
