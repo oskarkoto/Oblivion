@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '@app/usuario/usuario.model';
 import { UsuarioService } from '@app/usuario/usuario.service';
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-perfil',
@@ -10,8 +11,8 @@ import { UsuarioService } from '@app/usuario/usuario.service';
 export class PerfilPage{
   public usuarioLogueado: Usuario[]=[];
 
-  constructor(private usuarioService: UsuarioService) {
+  constructor(private loginService: LoginService) {
     this.usuarioLogueado.pop();
-    this.usuarioLogueado[0] = usuarioService.usuario[0];
+    this.usuarioLogueado = loginService.usuario;
   }
 }

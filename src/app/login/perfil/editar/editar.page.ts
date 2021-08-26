@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
 
 import { Usuario } from '@app/usuario/usuario.model';
 import { UsuarioService } from '@app/usuario/usuario.service';
-
+import { LoginService } from '@app/login/login.service';
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.page.html',
@@ -19,9 +19,10 @@ export class EditarPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private usuarioServicio: UsuarioService,
     private alertCtrl: AlertController,
+    private loginService: LoginService,
     private router: Router
   ) {
-    this.usuarioLogueado[0]= usuarioServicio.usuario[0];
+    this.usuarioLogueado = loginService.usuario;
   }
 
   ngOnInit() {
@@ -76,7 +77,7 @@ export class EditarPage implements OnInit {
       return;
     }
     console.log(this.formEdit);
-    this.usuarioServicio.editUsuario(
+    this.loginService.editarUsuario(
       this.formEdit.value.id,
       this.formEdit.value.nombre,
       this.formEdit.value.primerApellido,
