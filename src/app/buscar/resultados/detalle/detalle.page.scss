@@ -1,0 +1,19 @@
+ion-text{
+  margin-left: auto;
+  text-align: end;
+}
+
+#reservar{
+  --background: #a29372 !important;
+  --color:#e8e7e5;
+  font-family: "Century Gothic";
+  font-weight: bold;
+  text-shadow: 2px 1px 5px black;
+}
+
+ion-row ion-icon{
+  width: 16px;
+  height: 16px;
+  color: #c1b094;
+  --ionicon-stroke-width: 64px;
+}

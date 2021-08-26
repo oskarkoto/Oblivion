@@ -82,7 +82,9 @@ export class EditarPage implements OnInit {
       this.formEdit.value.password,
       this.formEdit.value.tipo,
     );
-    this.router.navigate(['/usuario']);
+    setTimeout(()=>{
+      this.router.navigate(['/usuario']);
+    },1000);
   }
 
 }
