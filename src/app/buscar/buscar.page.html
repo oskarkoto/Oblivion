@@ -41,6 +41,14 @@
           </ion-item>
         </ion-col>
       </ion-row>
+      <ion-row *ngIf="
+        !formBuscar.get('checkIn').valid &&
+        !formBuscar.get('checkOut').valid
+        ">
+        <ion-col  size-sm="6" offset-sm="3">
+          <p>Los campos Fecha de Ingreso y Fecha de salida son requeridos</p>
+        </ion-col>
+      </ion-row>
       <ion-row>
         <ion-button (click)="searchFunction()"> Buscar </ion-button>
       </ion-row>

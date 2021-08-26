@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Habitacion, Reservacion } from '../habitacion/habitacion.model';
 import { BuscarService } from '../buscar/buscar.service';
@@ -19,11 +19,11 @@ export class BuscarPage implements OnInit {
     this.formBuscar = new FormGroup({
       checkIn: new FormControl(null, {
         updateOn: 'blur',
-        validators:[]
+        validators:[Validators.required]
       }),
       checkOut: new FormControl(null, {
         updateOn: 'blur',
-        validators:[]
+        validators:[Validators.required]
       }),
       provincia: new FormControl(null, {
         updateOn: 'blur',
@@ -83,8 +83,7 @@ export class BuscarPage implements OnInit {
           console.log('recibo de getAllHabsActFechas la habitaciones:');
           console.log(this.habitaciones);
           setTimeout(() => {
-            this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
-            { checkOut: fCheckOut }]);
+            this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn , checkOut: fCheckOut}]);
           }, 500);
         } else {
           //busco habitaciones activas con filtro checkIn, checkOut y Provincia
@@ -98,8 +97,8 @@ export class BuscarPage implements OnInit {
           this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(this.buscarServicio.myProvincia,
             fCheckIn, fCheckOut);
           setTimeout(() => {
-            this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
-            { checkOut: fCheckOut }, { provincia: this.buscarServicio.myProvincia }]);
+            this.router.navigate(['/buscar/resultados',
+            { checkIn: fCheckIn, checkOut: fCheckOut, provincia: this.buscarServicio.myProvincia } ]);
           }, 500);
         }
       }
