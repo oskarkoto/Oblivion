@@ -46,7 +46,9 @@ export class BuscarPage implements OnInit {
           this.buscarServicio.myCheckIn = '';
           this.buscarServicio.myCheckOut = '';
           this.habitaciones = this.buscarServicio.getAllHabsAct();
-          this.router.navigate(['/buscar/resultados']);
+          setTimeout(() => {
+            this.router.navigate(['/buscar/resultados']);
+          }, 500);
         } else {
           //busco habitaciones activas con filtro de provincia
           console.log('con provincia de parametro');
@@ -54,7 +56,9 @@ export class BuscarPage implements OnInit {
           this.buscarServicio.myCheckIn = '';
           this.buscarServicio.myCheckOut = '';
           this.habitaciones = this.buscarServicio.getAllHabsActProv(this.buscarServicio.myProvincia);
-          this.router.navigate(['/buscar/resultados', { provincia: this.buscarServicio.myProvincia }]);
+          setTimeout(() => {
+            this.router.navigate(['/buscar/resultados', { provincia: this.buscarServicio.myProvincia }]);
+          }, 500);
         }
       } else {
         //Alerta: no puedo buscar sin checkin
@@ -76,9 +80,12 @@ export class BuscarPage implements OnInit {
           this.buscarServicio.myProvincia = '';
           console.log('Envío '+ fCheckIn + ' y '+ fCheckOut + ' a getAllHabsActFechas');
           this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
-          console.log('recibo de getAllHabsActFechas');
-          this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
-          { checkOut: fCheckOut }]);
+          console.log('recibo de getAllHabsActFechas la habitaciones:');
+          console.log(this.habitaciones);
+          setTimeout(() => {
+            this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
+            { checkOut: fCheckOut }]);
+          }, 500);
         } else {
           //busco habitaciones activas con filtro checkIn, checkOut y Provincia
           const fCheckIn = new Date(this.formBuscar.value.checkIn);
@@ -90,8 +97,10 @@ export class BuscarPage implements OnInit {
           this.buscarServicio.myProvincia = this.formBuscar.value.provincia;
           this.habitaciones = this.buscarServicio.getAllHabsActProvFechas(this.buscarServicio.myProvincia,
             fCheckIn, fCheckOut);
-          this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
-          { checkOut: fCheckOut }, { provincia: this.buscarServicio.myProvincia }]);
+          setTimeout(() => {
+            this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn },
+            { checkOut: fCheckOut }, { provincia: this.buscarServicio.myProvincia }]);
+          }, 500);
         }
       }
     }

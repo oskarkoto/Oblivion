@@ -137,7 +137,7 @@ export class BuscarService {
 }
 
   getAllHabsActFechas(checkIn: Date, checkOut: Date){
-    console.log('entro a getAllHabsActProvFechas con valores ' + checkIn + ' ' + checkOut);
+    console.log('entro a getAllHabsActFechas con valores ' + checkIn + ' ' + checkOut);
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(

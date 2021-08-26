@@ -51,11 +51,11 @@ export class DetallePage implements OnInit {
         //asigno valor para checkOut
         this.myCheckOut = this.buscarServicio.myCheckOut;
         //asigno valor para precioTotal
-        const dCheckIn = new Date(this.myCheckin);
-        const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+        const fCheckIn = new Date(this.myCheckin);
+        //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
         this.dCheckin = fCheckIn;
-        const dCheckOut = new Date(this.myCheckOut);
-        const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+        const fCheckOut = new Date(this.myCheckOut);
+        //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
         this.dCheckOut = fCheckOut;
         const differenceDates = Math.abs(fCheckOut.getTime() - fCheckIn.getTime());
         this.pTotal = (this.habitacion.precio) * differenceDates;
@@ -85,11 +85,11 @@ export class DetallePage implements OnInit {
         //asigno valor para checkOut
         this.myCheckOut = this.buscarServicio.myCheckOut;
         //asigno valor para precioTotal
-        const dCheckIn = new Date(this.myCheckin);
-        const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
+        const fCheckIn = new Date(this.myCheckin);
+        //const fCheckIn = new Date(this.buscarServicio.getFormatedDate(dCheckIn, 'MM/dd/yyyy'));
         this.dCheckin = fCheckIn;
-        const dCheckOut = new Date(this.myCheckOut);
-        const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
+        const fCheckOut = new Date(this.myCheckOut);
+        //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
         this.dCheckOut = fCheckOut;
         const differenceDates = Math.abs(fCheckOut.getTime() - fCheckIn.getTime());
         this.pTotal = (this.habitacion.precio) * differenceDates;

@@ -44,12 +44,6 @@
       <ion-row>
         <ion-button (click)="searchFunction()"> Buscar </ion-button>
       </ion-row>
-      <ion-row *ngIf="
-        !formBuscar.get('checkIn').valid &&
-        !formBuscar.get('checkOut').valid &&
-        !formBuscar.get('provincia').valid
-      ">
-      </ion-row>
     </ion-grid>
   </form>
 </ion-content>
