@@ -1,0 +1,55 @@
+ion-content{
+  --background: url(/assets/img/search_wallpaper.jpg) 0 0/100% 100% no-repeat;
+}
+.alerta{
+  text-align: center;
+  color: white;
+  font-weight: bolder;
+  text-shadow: 2px 3px 3px black;
+}
+ion-card.search{
+  margin: auto;
+  width: 90%;
+  height: 30%;
+  background: rgba(0, 0, 0, 0);
+  top:30%;
+  box-shadow: none !important;
+}
+ion-button{
+  font-family: "Century Gothic";
+  font-weight: bolder;
+  text-align: center;
+  margin: auto;
+  --background: #21d8e0;
+  width: 40%;
+}
+ion-icon{
+  margin-right: 5px;
+}
+ion-label{
+  margin: auto;
+  font-family: "Century Gothic";
+  text-align: left;
+}
+ion-item, ion-datetime{
+  --background: transparent !important;
+  --color: black;
+  margin: auto;
+}
+ion-datetime{
+  color: aliceblue;
+}
+ion-col.select ion-select{
+  width: 100% !important;
+}
+ion-col.select ion-item{
+  width: 78% !important;
+}
+ion-card.boton{
+  margin: auto;
+  width: 90%;
+  background: rgba(0, 0, 0, 0);
+  top:45%;
+  box-shadow: none !important;
+  text-align: center;
+}
