@@ -3,12 +3,17 @@
 <ion-content>
   <ion-card>
     <ion-card-title>
-      <img src="assets/img/Logo_Hotel.png" alt="LogoHotel" width="250px">
-
+      <img src="assets/img/Logo_Hotel.png" alt="LogoHotel" width="300px">
     </ion-card-title>
-    <ion-card-subtitle>
-      Bienvenido, {{this.usuarioLogueado[0].nombre}}
+    <ion-card-subtitle *ngIf="this.usuarioLogueado[0].tipo === 'Cliente'" >
+      <p>Déjate encantar por el mejor lugar para tu descanso...</p>
     </ion-card-subtitle>
+    <ion-card-subtitle *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" >
+      <p>La calidad nunca es un accidente. Es siempre el resultado de un esfuerzo inteligente...</p>
+    </ion-card-subtitle>
+    <ion-card-content>
+      <p>Te damos la bienvenida, {{this.usuarioLogueado[0].nombre}}</p>
+    </ion-card-content>
   </ion-card>
    <ion-tabs class="oblivion-tabs">
     <ion-tab-bar slot="bottom">
@@ -20,6 +25,14 @@
         <ion-icon name="search-outline"></ion-icon>
         <ion-label>Buscar</ion-label>
       </ion-tab-button>
+      <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Cliente'" [routerLink]="['/reservacion']">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>Mis Reservaciones</ion-label>
+      </ion-tab-button>
+      <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/reservacion']">
+        <ion-icon name="calendar-outline"></ion-icon>
+        <ion-label>Reservaciones</ion-label>
+      </ion-tab-button>
       <ion-tab-button *ngIf="this.usuarioLogueado[0].tipo === 'Administrador'" [routerLink]="['/habitacion']">
         <ion-icon name="bed-outline"></ion-icon>
         <ion-label>Habitaciones</ion-label>
@@ -29,7 +42,7 @@
         <ion-label>Usuarios</ion-label>
       </ion-tab-button>
       <ion-tab-button [routerLink]="['/perfil']">
-        <ion-icon name="person-circle"></ion-icon>
+        <ion-icon name="person-circle-outline"></ion-icon>
         <ion-label>Perfil</ion-label>
       </ion-tab-button>
     </ion-tab-bar>

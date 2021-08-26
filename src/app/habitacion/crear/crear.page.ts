@@ -109,7 +109,7 @@ export class CrearPage implements OnInit {
       }),
       capacidad: new FormControl(null, {
         updateOn: 'blur',
-        validators:[Validators.required]
+        validators:[Validators.required,Validators.min(2)],
       }),
       precio: new FormControl(null, {
         updateOn: 'blur',
@@ -131,6 +131,7 @@ export class CrearPage implements OnInit {
 
   addFunction(){
     if(!this.formCrear.valid){
+      window.confirm('No puedes colocar valores menores a 2');
       return;
     }
     console.log(this.formCrear);
@@ -146,7 +147,9 @@ export class CrearPage implements OnInit {
       this.formCrear.value.descripcion,
       this.uri
     );
-    this.router.navigate(['/habitacion']);
+    setTimeout(()=>{
+      this.router.navigate(['/habitacion']);
+    },500);
   }
 
 }

@@ -4,8 +4,14 @@
       <ion-back-button defaultHref="/usuario"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button [routerLink]="['./editar']"><ion-icon name='pencil' slot='icon-only'></ion-icon></ion-button>
-      <ion-button (click)="deleteUsuario()"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      <ion-tab-button [routerLink]="['./editar']">
+        <ion-icon name='pencil'></ion-icon>
+        <ion-label>Editar</ion-label>
+      </ion-tab-button>
+      <ion-tab-button (click)="deleteUsuario()">
+        <ion-icon name="trash-outline"></ion-icon>
+        <ion-label>Eliminar</ion-label>
+      </ion-tab-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

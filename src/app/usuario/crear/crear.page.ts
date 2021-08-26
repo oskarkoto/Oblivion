@@ -4,8 +4,6 @@ import { Router } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { finalize, tap } from 'rxjs/operators';
 
 export interface FILE {
   name: string;
@@ -62,7 +60,6 @@ ngOnInit() {
     })
   });
 }
-
 addUsuario(){
   if(!this.formCrear.valid){
     return;
@@ -78,7 +75,9 @@ addUsuario(){
     this.formCrear.value.password,
     this.formCrear.value.tipo,
   );
-  this.router.navigate(['/usuario']);
+  setTimeout(()=>{
+    this.router.navigate(['/usuario']);
+  },500);
 }
 
 }

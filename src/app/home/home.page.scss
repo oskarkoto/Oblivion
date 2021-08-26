@@ -5,15 +5,30 @@ ion-content{
 ion-card{
   margin: auto;
   width: 90%;
-  height: 40%;
+  height: 50%;
   background: rgba(255, 255, 255, 0.356);
-  top: 30%;
+  top: 20%;
 }
 
 ion-card-subtitle{
   font-family: "Century Gothic";
   font-weight: bolder;
-  text-align: center;
+  text-align: justify;
+  margin-left:5px;
+  margin-right:5px;
   color:white;
-  text-shadow: 2px 1px 3px gray;
+  text-shadow: 2px 1px 3px black;
+}
+ion-card-content p{
+  font-family:'Lucida Sans';
+  font-style: italic;
+  font-weight: bold;
+  color: #25f4ff;
+  text-align: center;
+  text-shadow: 2px 2px 3px black;
+}
+
+.oblivion-tabs ion-tab-button ion-label{
+  font-size: 12px;
+  margin:auto;
 }

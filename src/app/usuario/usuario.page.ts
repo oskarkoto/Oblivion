@@ -9,7 +9,7 @@ import { UsuarioService } from './usuario.service';
 })
 export class UsuarioPage implements OnInit {
   usuarios: Usuario[];
-  constructor(private usuarioServicio: UsuarioService) { }
+  constructor(private usuarioServicio: UsuarioService) {}
 
   ngOnInit() {
     console.log('onInitUsuario');

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Usuario } from '@app/usuario/usuario.model';
 import { UsuarioService } from '@app/usuario/usuario.service';
-
+import { LoginService } from '@app/login/login.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -9,10 +9,8 @@ import { UsuarioService } from '@app/usuario/usuario.service';
 })
 export class HomePage{
   public usuarioLogueado: Usuario[]=[];
-
-  constructor(private usuarioService: UsuarioService) {
+  constructor(private loginService: LoginService) {
     this.usuarioLogueado.pop();
-    this.usuarioLogueado[0] = this.usuarioService.usuario[0];
+    this.usuarioLogueado = loginService.usuario;
   }
-
 }

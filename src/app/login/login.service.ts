@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Usuario } from '../usuario/usuario.model';
 import { HttpClient } from '@angular/common/http';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { UsuarioService } from '../usuario/usuario.service';
 
 @Injectable({
@@ -9,6 +8,7 @@ import { UsuarioService } from '../usuario/usuario.service';
 })
 export class LoginService {
   public usuario: Usuario [] = [];
+  public usuarios: Usuario[] = [];
   public allUsuarios: Usuario [] = [];
   //private usuarioService: UsuarioService;
   constructor(private httpClient: HttpClient, private usuarioService: UsuarioService){
@@ -41,6 +41,32 @@ export class LoginService {
         }
       );
       return [...this.allUsuarios];
+  }
+
+  editarUsuario(id: string,nombre: string, primerApellido: string,segundoApellido: string,
+    telefono: string,correo: string,password: string,tipo: string){
+    const newUsuario = new Usuario(
+      id,
+      nombre,
+      primerApellido,
+      segundoApellido,
+      telefono,
+      correo,
+      password,
+      tipo);
+    this.httpClient.put(
+      `https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario/${id}.json`,
+    {
+      ...newUsuario,
+      id: null
+    })
+    .subscribe(
+      (resData) => {
+        console.log(resData);
+      },
+    );
+    this.usuario.pop();
+    this.usuario.push(newUsuario);
   }
 
   loginUser(correo: string,password: string){

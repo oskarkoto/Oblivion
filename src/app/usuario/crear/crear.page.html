@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Crear usuario</ion-title>
+    <ion-title>Agregar</ion-title>
     <ion-buttons slot="primary">
       <ion-button (click)="addUsuario()">
         <ion-icon name="checkmark" slot="icon-only"></ion-icon>
@@ -42,7 +42,7 @@
       <ion-row>
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
-            <ion-label position="floating">Telefono</ion-label>
+            <ion-label position="floating">Teléfono</ion-label>
             <ion-input type="tel" autocomplete autocorrect formControlName="telefono"></ion-input>
           </ion-item>
         </ion-col>
@@ -67,7 +67,7 @@
         <ion-col size-sm="6" offset-sm="3">
           <ion-item>
             <ion-label position="floating">Tipo</ion-label>
-            <ion-select  okText="Okay" cancelText="Cancelar" formControlName="tipo">
+            <ion-select  okText="Confirmar" cancelText="Cancelar" formControlName="tipo">
               <ion-select-option value="Administrador">Administrador</ion-select-option>
               <ion-select-option value="Cliente">Cliente</ion-select-option>
             </ion-select>
@@ -84,7 +84,7 @@
         !formCrear.get('tipo').valid
       ">
         <ion-col  size-sm="6" offset-sm="3">
-          <p>Todos los campos son requeridos</p>
+          <p>* Todos los campos son requeridos</p>
         </ion-col>
       </ion-row>
     </ion-grid>

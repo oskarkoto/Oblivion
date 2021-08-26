@@ -12,7 +12,7 @@ import { UsuarioService } from '../usuario.service';
 })
 export class EditarPage implements OnInit {
   formEdit: FormGroup;
-  usuario: Usuario;
+  usuarios: Usuario;
   constructor(
     private activatedRoute: ActivatedRoute,
     private usuarioServicio: UsuarioService,
@@ -28,39 +28,39 @@ export class EditarPage implements OnInit {
           return;
         }
         const usuarioId = paramMap.get('usuarioId');
-        this.usuario = this.usuarioServicio.getUsuario(usuarioId);
-        console.log(this.usuario);
+        this.usuarios = this.usuarioServicio.getUsuario(usuarioId);
+        console.log(this.usuarios);
       }
     );
     this.formEdit = new FormGroup({
-      id: new FormControl(this.usuario.id, {
+      id: new FormControl(this.usuarios.id, {
         updateOn: 'blur'
       }),
-      nombre: new FormControl(this.usuario.nombre, {
+      nombre: new FormControl(this.usuarios.nombre, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      primerApellido: new FormControl(this.usuario.primerApellido, {
+      primerApellido: new FormControl(this.usuarios.primerApellido, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      segundoApellido: new FormControl(this.usuario.segundoApellido, {
+      segundoApellido: new FormControl(this.usuarios.segundoApellido, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      telefono: new FormControl(this.usuario.telefono, {
+      telefono: new FormControl(this.usuarios.telefono, {
         updateOn: 'blur',
         validators:[Validators.required]
       }),
-      correo: new FormControl(this.usuario.correo, {
+      correo: new FormControl(this.usuarios.correo, {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      password: new FormControl(this.usuario.password, {
+      password: new FormControl(this.usuarios.password, {
         updateOn: 'blur',
         validators: [Validators.required]
       }),
-      tipo: new FormControl(this.usuario.tipo, {
+      tipo: new FormControl(this.usuarios.tipo, {
         updateOn: 'blur',
         validators: [Validators.required]
       })

@@ -1,6 +1,8 @@
 <ion-content fullscreen="[true]">
+  <ion-card class="titulo">
+    <ion-card-title>INICIA SESION</ion-card-title>
+  </ion-card>
   <ion-card>
-    <ion-card-title>Ingresa ahora</ion-card-title>
     <form [formGroup]="formCrear">
       <ion-grid>
         <ion-row>
@@ -30,8 +32,9 @@
       </ion-grid>
     </form>
     <ion-card-content>
-      <ion-button expand="full" color="primary" (click)="loginUser()">Login</ion-button>
+      <ion-button expand="full" color="primary" (click)="loginUser()">Ingresar</ion-button>
       <ion-button expand="full" color="secondary" [routerLink]="['/registro']">Registrarse</ion-button>
+      <p>¿No tienes cuenta Oblivion?</p>
     </ion-card-content>
   </ion-card>
 </ion-content>
