@@ -21,7 +21,6 @@ export class DetallePage implements OnInit {
   dCheckin: Date;
   dCheckOut: Date;
   pTotal: number;
-  formCrearReservacion: FormGroup;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -44,6 +43,8 @@ export class DetallePage implements OnInit {
         //asigno habitacion
         this.habitacion = this.buscarServicio.getHabitacion(habitacionId);
         this.buscarServicio.habitacion[0] = this.habitacion;
+        console.log('ngOnInit Resultados -> Detalle de Habitacion:');
+        console.log(this.buscarServicio.habitacion[0]);
         //asigno valor para usuario
         this.usuario = this.usuarioServicio.usuario[0];
         //asigno valor para checkIn
@@ -59,13 +60,13 @@ export class DetallePage implements OnInit {
         this.dCheckOut = fCheckOut;
         const differenceDates = Math.abs(fCheckOut.getTime() - fCheckIn.getTime());
         this.pTotal = (this.habitacion.precio) * differenceDates;
-        console.log('recibo habitacion' + this.habitacion);
+        console.log('recibo habitacion');
+        console.log(this.habitacion);
       }
     );
-    this.formCrearReservacion = new FormGroup({});
   }
 
-  ionViewDidEnter(){
+  /*ionViewDidEnter(){
     console.log('entro onInit Resultados Detalle');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
@@ -97,22 +98,19 @@ export class DetallePage implements OnInit {
       }
     );
     this.formCrearReservacion = new FormGroup({});
-  }
+  }*/
 
   addReservaFunction(){
-    if(!this.formCrearReservacion.valid){
-      return;
-    }
-    console.log(this.formCrearReservacion);
+    console.log(this.buscarServicio.habitacion[0].id);
     this.buscarServicio.addReservacion(
-      this.formCrearReservacion.value.id,
-      this.habitacion.id,
-      this.usuario.id,
+      this.buscarServicio.habitacion[0].id,
+      this.buscarServicio.habitacion[0].id,
+      this.usuarioServicio.usuario[0].id,
       this.dCheckin,
       this.dCheckOut,
       this.pTotal
     );
-    this.router.navigate(['../../../habitacion/detalle']);
+    this.router.navigate(['../../../reservacion/detalle']);
   }
 
 

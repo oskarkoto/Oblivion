@@ -303,6 +303,8 @@ export class BuscarService {
 
   addReservacion(id: string, usuario: string, habitacion: string, checkIn: Date,
     checkOut: Date, precioTotal: number){
+    console.log('Entro a addReservacion');
+    console.log(id);
     const newReservacion = new Reservacion(id, usuario, habitacion, checkIn, checkOut, precioTotal);
     this.httpClient.post<{name: string}>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Reservacion.json',
     {
@@ -314,7 +316,9 @@ export class BuscarService {
         newReservacion.id = resData.name;
       },
     );
+    this.reservacion[0] = newReservacion;
     this.reservaciones.push(newReservacion);
+    console.log(this.reservaciones);
   }
 
   //----*----*----Fin Metodos de Reservacion----*----*----//
