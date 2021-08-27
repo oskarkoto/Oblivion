@@ -48,7 +48,6 @@ export class CrearPage implements OnInit {
     //obtengo el archivo completo de la img (nombre, tipo, tamaño, etc..)
     const file = event.item(0);
     if (file.type.split('/')[0] !== 'image') {
-      console.log('File type is not supported!');
       return;
     }
     this.isImgUploading = true;
@@ -73,9 +72,7 @@ export class CrearPage implements OnInit {
           this.uri = resp;
           this.isImgUploading = false;
           this.isImgUploaded = true;
-        },error => {
-          console.log(error);
-        });
+        },error => { });
       }),
       tap(snap => {
           this.fileSize = snap.totalBytes;
@@ -85,11 +82,7 @@ export class CrearPage implements OnInit {
 
   fileStorage(image: FILE) {
       const imgId = this.angularFirestore.createId();
-      this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
-        console.log(data);
-      }).catch(error => {
-        console.log(error);
-      });
+      this.ngFirestoreCollection.doc(imgId).set(image).then(data => { }).catch(error => { });
   }
 
   ngOnInit() {
@@ -134,8 +127,6 @@ export class CrearPage implements OnInit {
       window.confirm('No puedes colocar valores menores a 2');
       return;
     }
-    console.log(this.formCrear);
-    console.log(this.fileUploadedPath);
     this.habitacionServicio.addHabitacion(
       this.formCrear.value.id,
       this.formCrear.value.nombre,

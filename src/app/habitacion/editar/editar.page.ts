@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { Habitacion } from '../habitacion.model';
 import { HabitacionService } from '../habitacion.service';
 import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
@@ -51,7 +50,6 @@ export class EditarPage implements OnInit {
     //obtengo el archivo completo de la img (nombre, tipo, tamaño, etc..)
     const file = event.item(0);
     if (file.type.split('/')[0] !== 'image') {
-      console.log('File type is not supported!');
       return;
     }
     this.isImgUploading = true;
@@ -76,9 +74,7 @@ export class EditarPage implements OnInit {
           this.uri = resp;
           this.isImgUploading = false;
           this.isImgUploaded = true;
-        },error => {
-          console.log(error);
-        });
+        },error => { });
       }),
       tap(snap => {
           this.fileSize = snap.totalBytes;
@@ -88,11 +84,7 @@ export class EditarPage implements OnInit {
 
   fileStorage(image: FILE) {
     const imgId = this.angularFirestore.createId();
-    this.ngFirestoreCollection.doc(imgId).set(image).then(data => {
-      console.log(data);
-    }).catch(error => {
-      console.log(error);
-    });
+    this.ngFirestoreCollection.doc(imgId).set(image).then(data => { }).catch(error => { });
   }
 
   ngOnInit() {
@@ -105,7 +97,6 @@ export class EditarPage implements OnInit {
         const habitacionId = paramMap.get('habitacionId');
         this.habitacion = this.habitacionServicio.getHabitacion(habitacionId);
         this.uri = this.habitacion.img;
-        console.log(this.habitacion);
       }
     );
     this.formEdit = new FormGroup({
@@ -150,7 +141,6 @@ export class EditarPage implements OnInit {
     if(!this.formEdit.valid){
       return;
     }
-    console.log(this.formEdit);
     this.habitacionServicio.editHabitacion(
       this.formEdit.value.id,
       this.formEdit.value.nombre,

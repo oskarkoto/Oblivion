@@ -16,12 +16,10 @@ export class HabitacionPage implements OnInit {
   }
 
   ionViewWillEnter(){
-    console.log('onInitHabitacion');
     this.habitaciones = this.habitacionServicio.getAllHabs();
   }
 
   ionViewDidEnter(){
-    console.log('onInitHabitacion');
     this.habitaciones = this.habitacionServicio.getAllHabs();
   }
 
