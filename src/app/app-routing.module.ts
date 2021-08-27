@@ -174,7 +174,7 @@ const routes: Routes = [
           )
       },
       {
-        path: ':reservacionId',
+        path: ':reservacionID',
         loadChildren: () => import('./reservacion/detalle/detalle.module').then(
           m => m.DetallePageModule
         )

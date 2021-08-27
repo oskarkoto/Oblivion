@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { Habitacion, Reservacion } from '../../habitacion/habitacion.model';
 import { BuscarService } from '../../buscar/buscar.service';
+import { UsuarioService } from '../../usuario/usuario.service';
+import { Usuario } from '@app/usuario/usuario.model';
 
 @Component({
   selector: 'app-detalle',
@@ -10,16 +12,20 @@ import { BuscarService } from '../../buscar/buscar.service';
   styleUrls: ['./detalle.page.scss'],
 })
 export class DetallePage implements OnInit {
-  habitacion: Habitacion;
-  reservacion: Reservacion;
+  public habitacion: Habitacion;
+  public reservacion: Reservacion;
+  public usuario: Usuario;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private buscarServicio: BuscarService,
+    private usuarioServicio: UsuarioService,
     private router: Router,
     private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
+    console.log('didEnter Reservacion Detalle con:');
     this.habitacion = this.buscarServicio.habitacion[0];
     this.reservacion = this.buscarServicio.reservacion[0];
     this.activatedRoute.paramMap.subscribe(
@@ -30,13 +36,17 @@ export class DetallePage implements OnInit {
         }
         const reservacionId = paramMap.get('reservacionID');
         this.reservacion = this.buscarServicio.getReservacion(reservacionId);
+        console.log(this.reservacion);
         this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        console.log('recibo reservacion' + this.reservacion);
+        console.log(this.habitacion);
+        this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
+        console.log(this.usuario);
       }
     );
   }
 
   ionViewDidEnter() {
+    console.log('didEnter Reservacion Detalle con:');
     this.habitacion = this.buscarServicio.habitacion[0];
     this.reservacion = this.buscarServicio.reservacion[0];
     this.activatedRoute.paramMap.subscribe(
@@ -47,8 +57,11 @@ export class DetallePage implements OnInit {
         }
         const reservacionId = paramMap.get('reservacionID');
         this.reservacion = this.buscarServicio.getReservacion(reservacionId);
+        console.log(this.reservacion);
         this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        console.log('recibo reservacion' + this.reservacion);
+        console.log(this.habitacion);
+        this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
+        console.log(this.usuario);
       }
     );
   }

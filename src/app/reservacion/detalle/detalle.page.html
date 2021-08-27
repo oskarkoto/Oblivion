@@ -7,27 +7,39 @@
 </ion-header>
 
 <ion-content>
+  <ion-content>
   <ion-card>
-    <ion-item>
-      <ion-text style="margin-right: 0; margin-left: 250px;">{{reservacion.id}}</ion-text>
-    </ion-item>
     <ion-item-divider></ion-item-divider>
+    <ion-row>
+      <ion-text style="text-align: justify;">{{reservacion.id}}</ion-text>
+    </ion-row>
     <ion-card-content>
-      <ion-row>
-        <ion-text><ion-icon name="location-outline"></ion-icon><strong>{{reservacion.usuario}}</strong></ion-text>
-      </ion-row>
-      <ion-row>
-        <h2 style="margin-right: 15px;"><strong>{{reservacion.habitacion}}</strong></h2>
-      </ion-row>
-      <ion-row>
-        <ion-text style="text-align: justify;">{{reservacion.checkIn}}</ion-text>
-      </ion-row>
-      <ion-row>
-        <ion-text style="text-align: justify;">{{reservacion.checkOut}}</ion-text>
-      </ion-row>
-      <ion-row>
-        <ion-text style="text-align: justify;">{{reservacion.precioTotal}}</ion-text>
-      </ion-row>
-    </ion-card-content>
+        <ion-row>
+          <ion-text><ion-icon name="location-outline"></ion-icon><strong>{{habitacion.nombre}}</strong></ion-text>
+        </ion-row>
+        <ion-row>
+            <h2 style="margin-right: 15px;"><strong>{{habitacion.categoria}}</strong></h2>
+        </ion-row>
+        <ion-row>
+            <h2 style="margin-right: 15px;"><strong>{{usuario.nombre}} {{usuario.primerApellido}}</strong></h2>
+        </ion-row>
+        <ion-row>
+            <h2 style="margin-right: 15px;"><strong>{{usuario.correo}}</strong></h2>
+        </ion-row>
+        <ion-item-divider></ion-item-divider>
+        <ion-row>
+          <ion-col>
+            <ion-row>
+              <ion-text>{{reservacion.checkIn}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>{{reservacion.checkOut}}</ion-text>
+            </ion-row>
+            <ion-row>
+              <ion-text>{{reservacion.precioTotal}}</ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
   </ion-card>
 </ion-content>

@@ -29,16 +29,6 @@ export class ReservacionPage implements OnInit {
       }
   }
 
-  /*ionViewWillEnter(){
-    if (this.usuarioServicio.usuario[0].tipo === 'Administrador'){
-      this.usuario = this.usuarioServicio.usuario[0];
-      this.reservaciones = this.buscarServicio.getAllRes();
-    } else {
-      this.usuario = this.usuarioServicio.usuario[0];
-      this.reservaciones = this.buscarServicio.getAllResUsuario(this.usuario.id);
-    }
-  }*/
-
   ionViewDidEnter(){
       console.log('onInit de Reservacion con el usuario:');
       console.log(this.loginService.usuario[0]);
