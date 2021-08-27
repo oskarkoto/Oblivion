@@ -2,6 +2,7 @@
   <ion-toolbar>
     <ion-buttons >
       <ion-back-button slot="start" defaultHref="/reservacion"></ion-back-button>
+      <ion-title>Detalle</ion-title>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -9,34 +10,45 @@
 <ion-content>
   <ion-content>
   <ion-card>
-    <ion-item-divider></ion-item-divider>
-    <ion-row>
-      <ion-text style="text-align: justify;">{{reservacion.id}}</ion-text>
-    </ion-row>
+    <ion-item-divider width="20px">
+      <ion-label>ID Reservación: </ion-label>
+      <ion-text>{{reservacion.id}}</ion-text>
+    </ion-item-divider>
     <ion-card-content>
         <ion-row>
-          <ion-text><ion-icon name="location-outline"></ion-icon><strong>{{habitacion.nombre}}</strong></ion-text>
+          <ion-title>Sede Oblivion: </ion-title>
+          <ion-text><ion-icon name="location-outline"></ion-icon> {{habitacion.provincia}}</ion-text>
         </ion-row>
         <ion-row>
-            <h2 style="margin-right: 15px;"><strong>{{habitacion.categoria}}</strong></h2>
+          <ion-title>Categoría: </ion-title>
+          <ion-text>{{habitacion.categoria}}</ion-text>
         </ion-row>
         <ion-row>
-            <h2 style="margin-right: 15px;"><strong>{{usuario.nombre}} {{usuario.primerApellido}}</strong></h2>
+          <ion-title>Cliente: </ion-title>
+          <ion-text>{{usuario.nombre}} {{usuario.primerApellido}} </ion-text>
         </ion-row>
         <ion-row>
-            <h2 style="margin-right: 15px;"><strong>{{usuario.correo}}</strong></h2>
+          <ion-title>Correo: </ion-title>
+          <ion-text>{{usuario.correo}}</ion-text>
+        </ion-row>
+        <ion-row>
+          <ion-title>Teléfono: </ion-title>
+          <ion-text>{{usuario.telefono}}</ion-text>
         </ion-row>
         <ion-item-divider></ion-item-divider>
         <ion-row>
           <ion-col>
             <ion-row>
-              <ion-text>{{reservacion.checkIn}}</ion-text>
+              <ion-title>Fecha de Llegada:</ion-title>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="reservacion.checkIn" readonly></ion-datetime>
             </ion-row>
             <ion-row>
-              <ion-text>{{reservacion.checkOut}}</ion-text>
+              <ion-title>Fecha de Salida:</ion-title>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="reservacion.checkOut" readonly></ion-datetime>
             </ion-row>
             <ion-row>
-              <ion-text>{{reservacion.precioTotal}}</ion-text>
+              <ion-title>Total de Pago:</ion-title>
+              <ion-text>₡ {{reservacion.precioTotal}}</ion-text>
             </ion-row>
           </ion-col>
         </ion-row>

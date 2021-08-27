@@ -17,7 +17,7 @@ export class BuscarService {
 
   constructor(private httpClient: HttpClient)
   {
-    //this.habitaciones = this.getAllHabs();
+    this.habitaciones = this.getAllHabsAct();
     //this.reservaciones = this.getAllRes();
   }
 
@@ -179,6 +179,7 @@ export class BuscarService {
   getHabitacion(habitacionId: string){
     console.log('entro a getHabitacion con habitacion id: ');
     console.log(habitacionId);
+    this.habitacion.pop();
     return {...this.habitaciones.find(
       habitacion => habitacionId === habitacion.id
     )};
