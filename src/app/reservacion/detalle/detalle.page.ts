@@ -23,48 +23,18 @@ export class DetallePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.habitacion = this.buscarServicio.habitacion[0];
-    this.reservacion = this.buscarServicio.reservacion[0];
+    console.log('onInit Reservacion Detalle con:');
+    //this.habitacion = this.buscarServicio.habitacion[0];
+    //this.reservacion = this.buscarServicio.reservacion[0];
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
         if(!paramMap.has('reservacionID')){
-          //Alerta: No existe Reservacion
-          return;
-        }
-        const reservacionId = paramMap.get('reservacionID');
-        this.reservacion = this.buscarServicio.getReservacion(reservacionId);
-        this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
-      }
-    );
-  }
-
-  ionViewWillEnter() {
-    console.log('didEnter Reservacion Detalle con:');
-    this.habitacion = this.buscarServicio.habitacion[0];
-    this.reservacion = this.buscarServicio.reservacion[0];
-    this.activatedRoute.paramMap.subscribe(
-      paramMap => {
-        if(!paramMap.has('reservacionID')){
-          //Alerta: No existe Reservacion
-          return;
-        }
-        const reservacionId = paramMap.get('reservacionID');
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-        this.reservacion = this.buscarServicio.getReservacion(reservacionId);
-        this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
-      }
-    );
-  }
-
-  ionViewDidEnter() {
-    this.habitacion = this.buscarServicio.habitacion[0];
-    this.reservacion = this.buscarServicio.reservacion[0];
-    this.activatedRoute.paramMap.subscribe(
-      paramMap => {
-        if(!paramMap.has('reservacionID')){
-          //Alerta: No existe Reservacion
+          this.reservacion = this.buscarServicio.getReservacion(this.buscarServicio.habitacion[0].id);
+          console.log(this.reservacion);
+          this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
+          console.log(this.habitacion);
+          this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
+          console.log(this.usuario);
           return;
         }
         const reservacionId = paramMap.get('reservacionID');

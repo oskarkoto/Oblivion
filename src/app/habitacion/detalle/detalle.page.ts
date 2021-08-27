@@ -14,9 +14,7 @@ export class DetallePage implements OnInit {
   reservacion: Reservacion;
   constructor(
     private activatedRoute: ActivatedRoute,
-    private habitacionServicio: HabitacionService,
-    private router: Router,
-    private alertCtrl: AlertController
+    private habitacionServicio: HabitacionService
   ) { }
 
   ngOnInit() {
@@ -28,7 +26,6 @@ export class DetallePage implements OnInit {
         }
         const habitacionId = paramMap.get('habitacionID');
         this.habitacion = this.habitacionServicio.getHabitacion(habitacionId);
-        console.log('recibo habitacion' + this.habitacion);
       }
     );
   }

@@ -12,14 +12,12 @@ export class HabitacionService {
   private reservaciones: Reservacion[] = [];
   constructor(private httpClient: HttpClient)
   {
-    //this.habitaciones = this.getAllHabs();
-    //this.reservaciones = this.getAllRes();
+    this.habitaciones = this.getAllHabs();
   }
 
   //----*----*----Metodos de Habitacion----*----*----//
 
   getAllHabs(){
-    console.log('entro a getAllHabs');
     this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
@@ -40,10 +38,8 @@ export class HabitacionService {
             }
           }
           this.habitaciones = habitaciones;
-          console.log(habitaciones);
         }
       );
-      console.log('resultado del getAllHabs ' + this.habitaciones);
     return [...this.habitaciones];
   }
 
@@ -54,7 +50,6 @@ export class HabitacionService {
   }
 
   getAllHabsAct(){
-    console.log('entro a getAllHabs');
     this.httpClient.get<{ [key: string]: Habitacion }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
         resData => {
@@ -75,14 +70,12 @@ export class HabitacionService {
             }
           }
           this.habitaciones = habitaciones;
-          console.log(habitaciones);
         }
       );
     return [...this.habitaciones];
   }
 
   getAllHabsActProv(prov: string){
-    console.log('entro a getAllHabsActProv');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -103,14 +96,12 @@ export class HabitacionService {
             }
           }
           this.habitaciones = habitaciones;
-          console.log(habitaciones);
         }
       );
     return [...this.habitaciones];
   }
 
   getAllHabsActProvFechas(prov: string, checkIn: Date, checkOut: Date){
-    console.log('entro a getAllHabsActProvFechas');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -132,14 +123,12 @@ export class HabitacionService {
             }
           }
           this.habitaciones = habitaciones;
-          console.log(habitaciones);
         }
       );
     return [...this.habitaciones];
   }
 
   getAllHabsActFechas(checkIn: Date, checkOut: Date){
-    console.log('entro a getAllHabsActFechas');
     this.httpClient.get<{ [key: string]: Habitacion }>
     ('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Habitacion.json')
     .subscribe(
@@ -158,14 +147,12 @@ export class HabitacionService {
             }
           }
           this.habitaciones = habitaciones;
-          console.log(habitaciones);
         }
       );
     return [...this.habitaciones];
   }
 
   getHabitacion(habitacionId: string){
-    console.log('entro a getHabitacion');
     return {...this.habitaciones.find(
       habitacion => habitacionId === habitacion.id
     )};
@@ -190,7 +177,6 @@ export class HabitacionService {
 
   editHabitacion(id: string, nombre: string, estado: string, categoria: string,
     capacidad: number, precio: number, provincia: string, descripcion: string, img: string){
-    console.log('entro a editHabitacion');
     const newHabitacion = new Habitacion(
       id,
       nombre,
@@ -208,9 +194,7 @@ export class HabitacionService {
       id: null
     })
     .subscribe(
-      (resData) => {
-        console.log(resData);
-      },
+      (resData) => { },
     );
   }
 
@@ -231,7 +215,6 @@ export class HabitacionService {
             }
           }
           this.reservaciones = reservaciones;
-          console.log(reservaciones);
         }
       );
     return [...this.reservaciones];
@@ -254,7 +237,6 @@ export class HabitacionService {
             }
           }
           this.reservaciones = reservaciones;
-          console.log(reservaciones);
         }
       );
     return [...this.reservaciones];
