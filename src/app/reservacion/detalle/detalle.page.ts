@@ -20,12 +20,9 @@ export class DetallePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private buscarServicio: BuscarService,
     private usuarioServicio: UsuarioService,
-    private router: Router,
-    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
-    console.log('didEnter Reservacion Detalle con:');
     this.habitacion = this.buscarServicio.habitacion[0];
     this.reservacion = this.buscarServicio.reservacion[0];
     this.activatedRoute.paramMap.subscribe(
@@ -36,11 +33,8 @@ export class DetallePage implements OnInit {
         }
         const reservacionId = paramMap.get('reservacionID');
         this.reservacion = this.buscarServicio.getReservacion(reservacionId);
-        console.log(this.reservacion);
         this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        console.log(this.habitacion);
         this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
-        console.log(this.usuario);
       }
     );
   }
@@ -58,17 +52,13 @@ export class DetallePage implements OnInit {
         const reservacionId = paramMap.get('reservacionID');
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this.reservacion = this.buscarServicio.getReservacion(reservacionId);
-        console.log(this.reservacion);
         this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        console.log(this.buscarServicio.getHabitacion(this.reservacion.habitacion));
         this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
-        console.log(this.usuario);
       }
     );
   }
 
   ionViewDidEnter() {
-    console.log('didEnter Reservacion Detalle con:');
     this.habitacion = this.buscarServicio.habitacion[0];
     this.reservacion = this.buscarServicio.reservacion[0];
     this.activatedRoute.paramMap.subscribe(
@@ -80,11 +70,8 @@ export class DetallePage implements OnInit {
         const reservacionId = paramMap.get('reservacionID');
         // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         this.reservacion = this.buscarServicio.getReservacion(reservacionId);
-        console.log(this.reservacion);
         this.habitacion = this.buscarServicio.getHabitacion(this.reservacion.habitacion);
-        console.log(this.buscarServicio.getHabitacion(this.reservacion.habitacion));
         this.usuario = this.usuarioServicio.getUsuario(this.reservacion.usuario);
-        console.log(this.usuario);
       }
     );
   }

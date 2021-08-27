@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Reservacion } from '../habitacion/habitacion.model';
 import { BuscarService } from '../buscar/buscar.service';
-import { UsuarioService } from '../usuario/usuario.service';
 import { Usuario } from '../usuario/usuario.model';
 import { LoginService } from '@app/login/login.service';
 
@@ -18,8 +16,6 @@ export class ReservacionPage implements OnInit {
   constructor(private buscarServicio: BuscarService, private loginService: LoginService) {}
 
   ngOnInit() {
-      console.log('onInit de Reservacion con el usuario:');
-      console.log(this.loginService.usuario[0]);
       if (this.loginService.usuario[0].tipo === 'Administrador'){
         this.usuario = this.loginService.usuario[0];
         this.reservaciones = this.buscarServicio.getAllRes();
@@ -30,8 +26,6 @@ export class ReservacionPage implements OnInit {
   }
 
   ionViewDidEnter(){
-      console.log('onInit de Reservacion con el usuario:');
-      console.log(this.loginService.usuario[0]);
       if (this.loginService.usuario[0].tipo === 'Administrador'){
         this.usuario = this.loginService.usuario[0];
         this.reservaciones = this.buscarServicio.getAllRes();

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UsuarioService } from '../usuario.service';
-import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 export interface FILE {
   name: string;
@@ -64,7 +64,6 @@ addUsuario(){
   if(!this.formCrear.valid){
     return;
   }
-  console.log(this.formCrear);
   this.usuarioServicio.addUsuario(
     this.formCrear.value.id,
     this.formCrear.value.nombre,

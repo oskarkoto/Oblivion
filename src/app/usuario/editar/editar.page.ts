@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { Usuario } from '../usuario.model';
 import { UsuarioService } from '../usuario.service';
 
@@ -16,7 +15,6 @@ export class EditarPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private usuarioServicio: UsuarioService,
-    private alertCtrl: AlertController,
     private router: Router
   ) { }
 
@@ -29,7 +27,6 @@ export class EditarPage implements OnInit {
         }
         const usuarioId = paramMap.get('usuarioId');
         this.usuarios = this.usuarioServicio.getUsuario(usuarioId);
-        console.log(this.usuarios);
       }
     );
     this.formEdit = new FormGroup({
@@ -71,7 +68,6 @@ export class EditarPage implements OnInit {
     if(!this.formEdit.valid){
       return;
     }
-    console.log(this.formEdit);
     this.usuarioServicio.editUsuario(
       this.formEdit.value.id,
       this.formEdit.value.nombre,

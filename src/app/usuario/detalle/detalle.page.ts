@@ -16,7 +16,6 @@ export class DetallePage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private usuarioServicio: UsuarioService,
     private router: Router,
-    private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {

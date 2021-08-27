@@ -40,12 +40,8 @@ export class LoginPage implements OnInit {
     }
     this.usuarioLogueado[0] = this.loginService.loginUser(this.formCrear.value.correo,
       this.formCrear.value.password)[0];
-      console.log(this.formCrear.value.correo);
-      console.log(this.formCrear.value.password);
     if(this.usuarioLogueado[0] === undefined){
-      console.log('El usuario no existe');
     } else {
-      console.log('El usuario existe');
       this.router.navigate(['/home']);
     }
   }
