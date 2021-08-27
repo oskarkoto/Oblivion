@@ -18,7 +18,6 @@ export class ReservacionPage implements OnInit {
   constructor(private buscarServicio: BuscarService, private loginService: LoginService) {}
 
   ngOnInit() {
-    setTimeout(()=>{
       console.log('onInit de Reservacion con el usuario:');
       console.log(this.loginService.usuario[0]);
       if (this.loginService.usuario[0].tipo === 'Administrador'){
@@ -28,7 +27,6 @@ export class ReservacionPage implements OnInit {
         this.usuario = this.loginService.usuario[0];
         this.reservaciones = this.buscarServicio.getAllResUsuario(this.usuario.id);
       }
-    },500);
   }
 
   /*ionViewWillEnter(){
