@@ -84,7 +84,7 @@ export class BuscarPage implements OnInit {
           console.log(this.habitaciones);
           setTimeout(() => {
             this.router.navigate(['/buscar/resultados', { checkIn: fCheckIn , checkOut: fCheckOut}]);
-          }, 500);
+          }, 700);
         } else {
           //busco habitaciones activas con filtro checkIn, checkOut y Provincia
           const fCheckIn = new Date(this.formBuscar.value.checkIn);

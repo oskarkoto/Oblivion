@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './resultados.page.html',
   styleUrls: ['./resultados.page.scss'],
 })
-export class ResultadosPage implements OnInit {
+export class ResultadosPage  {
   habitaciones: Habitacion[];
   reservaciones: Reservacion[];
 
@@ -18,7 +18,7 @@ export class ResultadosPage implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit() {
+  /*ngOnInit() {
     console.log('onInit de Resultados');
     this.activatedRoute.paramMap.subscribe(
       paramMap => {
@@ -79,7 +79,7 @@ export class ResultadosPage implements OnInit {
         }
       }
     );
-  }
+  }*/
 
   /**ionViewWillEnter(){
     console.log('ionViewWillEnter de Resultados');
@@ -170,8 +170,9 @@ export class ResultadosPage implements OnInit {
               const fCheckOut = new Date(paramMap.get('checkOut'));
               //const fCheckOut = new Date(this.buscarServicio.getFormatedDate(dCheckOut, 'MM/dd/yyyy'));
               this.habitaciones = this.buscarServicio.getAllHabsActFechas(fCheckIn, fCheckOut);
+              console.log('recibo en didEnter de resultados las siguientes habs de actFechas');
+              console.log(this.habitaciones);
               this.buscarServicio.habitaciones = this.habitaciones;
-              console.log('de ionViewDidEnter a getAllHabsActFechas ' + this.buscarServicio.habitaciones);
             }
           }
         } else {

@@ -82,6 +82,8 @@ export class DetallePage implements OnInit {
       this.dCheckOut,
       this.pTotal
     );
+    const lastReserva = this.buscarServicio.reservacion[0].id;
+    //this.router.navigate(['../../../reservacion/detalle', {reservacionID: lastReserva}]);
     this.router.navigate(['../../../reservacion/detalle']);
   }
 
