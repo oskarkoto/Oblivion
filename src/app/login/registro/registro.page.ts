@@ -21,8 +21,6 @@ export class RegistroPage implements OnInit {
   formCrear: FormGroup;
 
   constructor(
-    private angularFirestore: AngularFirestore,
-    private angularFireStorage: AngularFireStorage,
     private usuarioServicio: UsuarioService,
     private router: Router
   ) {}
@@ -61,7 +59,6 @@ addUsuario(){
   if(!this.formCrear.valid){
     return;
   }
-  console.log(this.formCrear);
   this.usuarioServicio.addUsuario(
     this.formCrear.value.id,
     this.formCrear.value.nombre,

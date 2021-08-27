@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title>Reservaciones</ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -9,24 +10,25 @@
 <ion-content>
   <ion-card *ngFor="let reservacion of reservaciones" [routerLink]="['./', reservacion.id]">
     <ion-row>
-        <ion-col col-9>
-            <ion-item-divider width="20px"><strong>{{reservacion.id}}</strong></ion-item-divider>
+      <ion-col>
+        <ion-item-divider width="20px">
+          <ion-label>ID Reservación: </ion-label>
+          <ion-text>{{reservacion.id}}</ion-text>
+        </ion-item-divider>
         <ion-card-content>
-            <ion-row>
-              <ion-text><strong> <ion-icon name="people-outline" style="margin-left: 5px;margin-right: 5px;"></ion-icon> {{reservacion.usuario}}</strong></ion-text>
-            </ion-row>
-            <ion-row>
-              <ion-text> {{reservacion.checkIn}}</ion-text>
-            </ion-row>
-            <ion-row>
-              <ion-text> {{reservacion.checkOut}}</ion-text>
-            </ion-row>
-            <ion-row>
-              <ion-text> {{reservacion.precioTotal}}</ion-text>
-            </ion-row>
-          </ion-card-content>
+          <ion-row>
+            <ion-title>ID Cliente: </ion-title>
+            <ion-text>{{reservacion.usuario}}</ion-text>
+          </ion-row>
+          <ion-row>
+              <ion-title>Período de reservacion:</ion-title>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="reservacion.checkIn" readonly></ion-datetime>
+                <ion-text class="separador">/</ion-text>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="reservacion.checkOut" readonly float-end></ion-datetime>
+          </ion-row>
+        </ion-card-content>
       </ion-col>
     </ion-row>
   </ion-card>
-  <div class="undefined" *ngIf="reservaciones.length === 0">* No hay reservaciones a su nombre</div>
+  <div class="undefined" *ngIf="reservaciones.length === 0">* No hay reservaciones a su nombre.</div>
 </ion-content>

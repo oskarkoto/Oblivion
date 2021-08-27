@@ -1,5 +1,6 @@
 <ion-header>
   <ion-toolbar>
+    <ion-title> Resultados </ion-title>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/buscar"></ion-back-button>
     </ion-buttons>
@@ -34,4 +35,5 @@
       </ion-col>
     </ion-row>
   </ion-card>
+  <div class="undefined" *ngIf="habitaciones.length === 0">* No hay resultados para su búsqueda.</div>
 </ion-content>

@@ -16,7 +16,6 @@ export class LoginService {
    }
 
   getAll(){
-    console.log('getAllUsuario');
     this.httpClient.get<{ [key: string]: Usuario }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario.json')
     .subscribe(
         resData => {
@@ -37,7 +36,6 @@ export class LoginService {
           }
           this.allUsuarios = usuarios ;
           this.usuarioService.usuarios = this.allUsuarios;
-          console.log('allUsuarios');
         }
       );
       return [...this.allUsuarios];
@@ -81,7 +79,6 @@ export class LoginService {
       }
     )
   );
-  console.log('LOGIN ' + this.usuario[0].nombre);
   this.usuarioService.usuario[0] = this.usuario[0];
   return [...this.usuario];
   }

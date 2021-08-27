@@ -12,7 +12,6 @@ export class UsuarioService {
   constructor(private httpClient: HttpClient)
   {  }
   getAll(){
-    console.log('getAllUsuario');
     this.httpClient.get<{ [key: string]: Usuario }>('https://oblivion-c1d3d-default-rtdb.firebaseio.com/Usuario.json')
     .subscribe(
         resData => {
@@ -32,7 +31,6 @@ export class UsuarioService {
             }
           }
           this.usuarios = usuarios;
-          console.log(usuarios);
         }
       );
     return [...this.usuarios];
