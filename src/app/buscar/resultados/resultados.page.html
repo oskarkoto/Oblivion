@@ -35,5 +35,7 @@
       </ion-col>
     </ion-row>
   </ion-card>
-  <div class="undefined" *ngIf="habitaciones.length === 0">* No hay resultados para su búsqueda.</div>
+  <ion-card *ngFor="let habitacion of habitaciones" >
+    <div class="undefined" *ngIf="habitacion === undefined">* No hay resultados para su búsqueda.</div>
+  </ion-card>
 </ion-content>

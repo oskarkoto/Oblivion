@@ -12,9 +12,11 @@ import { BuscarService } from '../buscar/buscar.service';
 export class BuscarPage implements OnInit {
   habitaciones: Habitacion[];
   formBuscar: FormGroup;
+  today: any;
   constructor(private router: Router, private buscarServicio: BuscarService) { }
 
   ngOnInit() {
+    this.getDate();
     this.formBuscar = new FormGroup({
       checkIn: new FormControl(null, {
         updateOn: 'blur',
@@ -95,5 +97,8 @@ export class BuscarPage implements OnInit {
       }
     }
   }
-
+  getDate() {
+    const date = new Date();
+    // eslint-disable-next-line max-len
+    this.today = date.getFullYear() + '-' + ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2); console.log(this.today); }
 }

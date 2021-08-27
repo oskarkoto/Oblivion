@@ -15,11 +15,11 @@
           <ion-item>
             <ion-label>Check-In</ion-label>
             <!-- <ion-datetime display-format="D, MMMM, YYYY" placeholder="Fecha de Ingreso" formControlName="checkIn"></ion-datetime> -->
-            <ion-datetime placeholder="Fecha de Ingreso" formControlName="checkIn"></ion-datetime>
+            <ion-datetime [min]="today" placeholder="Fecha de Ingreso" formControlName="checkIn"></ion-datetime>
           </ion-item>
           <ion-item>
             <ion-label>Check-Out</ion-label>
-            <ion-datetime placeholder="Fecha de Salida" formControlName="checkOut"></ion-datetime>
+            <ion-datetime [min]="today" placeholder="Fecha de Salida" formControlName="checkOut"></ion-datetime>
           </ion-item>
           <ion-col size-sm="6" offset-sm="3" class="select">
           <ion-item>
