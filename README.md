@@ -1,11 +1,10 @@
 # **Oblivion**
 
-Ionic Angular Mobile application for a Hotel management
+**Stack: Ionic / Angular / Firebase**
 
-# **Ionic
-# **Angular
-# **Typescript
-# **Firebase
+Mobile application for a Hotel management
+
+#
 
 -Admin / customer users
 -Add rooms to the Hotel
