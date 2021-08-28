@@ -2,10 +2,10 @@
 
 Ionic Angular Mobile application for a Hotel management
 
-**Ionic
-**Angular
-**Typescript
-**Firebase
+# **Ionic
+# **Angular
+# **Typescript
+# **Firebase
 
 -Admin / customer users
 -Add rooms to the Hotel
